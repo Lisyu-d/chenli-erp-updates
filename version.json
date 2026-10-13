@@ -1,1 +1,5 @@
-{"version":"2026.10.13.1","note":"初始版本","url":"https://lisyu-d.github.io/chenli-erp-updates/index.html"}
+{
+  "version": "2026.10.13.2",
+  "url": "https://lisyu-d.github.io/chenli-erp-updates/index.html",
+  "notes": "配置说明库、收款比例设置、Firebase同步竞态修复、APK版本对比"
+}
