@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>晨丽全屋定制</title>
+<style>
+:root{--pri:#166b45;--prid:#0f4d31;--bg:#f2f5f3;--card:#fff;--line:#dfe7e3;--txt:#22312b;--mut:#7d8c85;--amber:#fff7e6;--amberbd:#f0d48a;--red:#c0392b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--txt);font-size:14px;line-height:1.55;-webkit-text-size-adjust:100%}
+header.top{position:sticky;top:0;z-index:60;background:var(--prid);color:#fff;padding:10px 12px}
+header.top .t1{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+header.top h1{font-size:17px;font-weight:700}
+header.top .sub{font-size:11px;opacity:.75}
+.topbtns{display:flex;gap:6px}
+.backupbar{background:var(--amber);border-bottom:1px solid var(--amberbd);color:#8a6414;font-size:12px;padding:7px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.folderbar{background:#e8f5e9;border-bottom:1px solid #c8e6c9;color:#2e7d32;font-size:12px;padding:7px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+nav.tabs{position:sticky;top:0;z-index:55;background:#fff;border-bottom:1px solid var(--line);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch}
+nav.tabs button{flex:1 0 auto;border:0;background:none;padding:11px 14px;font-size:14px;color:var(--mut);border-bottom:3px solid transparent;white-space:nowrap;cursor:pointer}
+nav.tabs button.on{color:var(--pri);border-bottom-color:var(--pri);font-weight:700}
+main{max-width:none;width:100%;margin:0 auto;padding:12px 20px 80px;box-sizing:border-box}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:12px;box-shadow:0 1px 3px rgba(20,60,40,.06)}
+.card h2{font-size:15px;margin-bottom:10px;color:var(--prid)}
+.card h3{font-size:14px;margin:12px 0 8px;color:var(--prid)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.row.between{justify-content:space-between}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label.f{display:block;margin-bottom:10px}
+label.f>span{display:block;font-size:12px;color:var(--mut);margin-bottom:4px}
+input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;background:#fff;color:var(--txt)}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid #bfe3cf;border-color:var(--pri)}
+.btn{display:inline-block;border:1px solid var(--line);background:#fff;color:var(--txt);border-radius:8px;padding:9px 14px;font-size:14px;cursor:pointer;text-decoration:none}
+.btn.pri{background:var(--pri);border-color:var(--pri);color:#fff;font-weight:700}
+.btn.danger{background:#fff;border-color:var(--red);color:var(--red)}
+.btn.warn{background:#fff8e6;border-color:var(--amberbd);color:#8a6414}
+.btn.sm{padding:5px 10px;font-size:12px}
+.btn:disabled{opacity:.5}
+table.tbl{width:100%;border-collapse:collapse;font-size:13px}
+table.tbl th,table.tbl td{border:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}
+table.tbl th{background:#f4faf6;color:var(--prid);font-weight:700;white-space:nowrap}
+table.tbl td input,table.tbl td select{padding:5px 6px;font-size:13px;border:1px solid #e6ece9}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -14px;padding:0 14px}
+.r{text-align:right!important;white-space:nowrap}
+.mut{color:var(--mut);font-size:12px}
+.tot{background:#f4faf6;font-weight:700}
+.kv{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.kv:last-child{border-bottom:0}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:20px;background:#eef4f0;color:var(--pri);border:1px solid #d5e8db}
+.badge.gray{background:#f1f3f2;color:var(--mut);border-color:#e2e6e4}
+.badge.red{background:#fdecea;color:var(--red);border-color:#f5c6c0}
+.checkgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+.checkgrid button{aspect-ratio:1;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:11px;cursor:pointer;padding:2px}
+.checkgrid button.done{background:var(--pri);color:#fff;border-color:var(--pri)}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.thumb{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fafafa}
+.thumb img{width:100%;height:110px;object-fit:cover;display:block}
+.thumb button{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.55);color:#fff;border:0;border-radius:6px;font-size:11px;padding:3px 7px;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:#22312b;color:#fff;padding:10px 18px;border-radius:8px;font-size:14px;z-index:99;display:none}
+#printArea{display:none}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:999;padding:16px}
+.modal .mbox{background:#fff;border-radius:12px;max-width:520px;width:100%;max-height:80vh;overflow:auto;padding:18px}
+.modal .mbox h3{margin:0 0 12px}
+@media print{
+  header.top,.backupbar,.folderbar,nav.tabs,main,.toast,#importFile{display:none!important}
+  #printArea{display:block!important}
+  body{background:#fff}
+  .psheet{max-width:760px;margin:0 auto;color:#000;font-size:13px}
+  .psheet h1{font-size:20px;text-align:center;margin:6px 0}
+  .psheet .pmeta{display:flex;justify-content:space-between;flex-wrap:wrap;margin:8px 0;font-size:13px}
+  .psheet table{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+  .psheet th,.psheet td{border:1px solid #333;padding:5px 6px;text-align:left}
+  .psheet .pr{text-align:right}
+  .psheet .psign{display:flex;justify-content:space-between;margin-top:26px}
+  .psheet .pnote{font-size:12px;margin-top:10px;white-space:pre-line}
+  .psheet .pfoot{text-align:center;margin-top:22px;font-size:13px}
+  .psheet tr{page-break-inside:avoid}
+  .psheet thead{display:table-header-group}
+  .psheet table{page-break-inside:auto}
+}
+@media(max-width:640px){
+  .grid2{grid-template-columns:1fr}
+  main{padding:10px 8px 70px}
+  .checkgrid{grid-template-columns:repeat(7,1fr)}
+  .thumbs{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="t1">
+    <div><h1>晨丽定制管理系统</h1><div class="sub">单机版 · 双击即用 · 数据存本机</div></div>
+    <div class="topbtns">
+      <button class="btn sm" style="background:#fff" onclick="exportBackup()">导出备份</button>
+      <button class="btn sm" style="background:#fff" onclick="document.getElementById('importFile').click()">导入备份</button>
+    </div>
+  </div>
+</header>
+<div class="backupbar" id="backupBar"></div>
+<div class="folderbar" id="folderBar" style="display:none"></div>
+<nav class="tabs" id="tabs"></nav>
+<main id="app"></main>
+<div id="printArea"></div>
+<input type="file" id="importFile" accept="application/json,.json" hidden>
+<div class="toast" id="toast"></div>
+<script>
+'use strict';
+/* ============ 工具 ============ */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=v=>{const n=parseFloat(v);return isNaN(n)?0:n};
+const fmt=n=>'¥'+Number(n||0).toLocaleString('zh-CN',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmt3=n=>Number(n||0).toFixed(3);
+const uid=p=>(p||'')+Date.now().toString(36)+Math.floor(Math.random()*1e6).toString(36);
+const todayStr=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const monthStr=()=>todayStr().slice(0,7);
+function toast(m){const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',2200)}
+
+/* ============ 数据层 ============ */
+const DBKEY='chenli_erp_db_v1';
+let DB=null;
+function loadDB(){
+  try{const s=localStorage.getItem(DBKEY);if(s){DB=JSON.parse(s);if(DB&&DB.settings){migrateDB();backfillQR();return;}}}catch(e){}
+  DB=seedDB();saveDB(true);
+}
+/* 老用户数据迁移：补上新增的库；导入备份时也做一次兜底 */
+function migrateDB(){
+  if(!DB.extraLib)DB.extraLib=seedExtraLib();
+  else{const have={};DB.extraLib.forEach(e=>have[e.name]=1);
+    seedExtraLib().forEach(s=>{if(!have[s.name])DB.extraLib.push(s);});}
+  if(!DB.products)DB.products=seedProducts();
+  else{var ph={};DB.products.forEach(function(p){ph[p.name]=1;});seedProducts().forEach(function(s){if(!ph[s.name])DB.products.push(s);});}
+  if(!DB.settings)DB.settings={};
+  if(!Array.isArray(DB.contracts))DB.contracts=[];
+  if(!Array.isArray(DB.payments))DB.payments=[];
+  if(!Array.isArray(DB.media))DB.media=[];
+  if(Array.isArray(DB.quotes))DB.quotes.forEach(q=>{if(!q.category)q.category=(q.no||'').indexOf('CL-ZX-')===0?'zx':'dz';});
+  if(Array.isArray(DB.quotes))DB.quotes.forEach(q=>{if(!Array.isArray(q.follows))q.follows=[];});
+  if(Array.isArray(DB.quotes))DB.quotes.forEach(q=>{(q.items||[]).forEach(r=>{if(!r.cat)r.cat='dz';});});
+  if(!Array.isArray(DB.customers))DB.customers=[];
+  if(!Array.isArray(DB.projects))DB.projects=[];
+  if(!DB.checkins)DB.checkins={};
+  if(!DB.reviews)DB.reviews={};
+  if(Array.isArray(DB.projects))DB.projects.forEach(p=>{ if(!p.progress)p.progress={}; });
+  /* 默认银行信息与云配置：老用户空字段自动补上 */
+  if(DB.settings){
+    if(!DB.settings.bankName)DB.settings.bankName='农业银行（南海大沥支行）';
+    if(!DB.settings.bankAccount)DB.settings.bankAccount='**** **** **** **** ***';
+    if(!DB.settings.bankHolder)DB.settings.bankHolder='李志勤';
+    if(!DB.settings.fbConfig)DB.settings.fbConfig='{"apiKey":"AIzaSyCLNuFiglsXvfdRd_RXOeE94VqPENP0MDA","authDomain":"chenli-erp.firebaseapp.com","projectId":"chenli-erp","storageBucket":"chenli-erp.firebasestorage.app","messagingSenderId":"924770441461","appId":"1:924770441461:web:620bddfbf114ad3d08cdbc"}';
+  }
+  try{saveDB(true);}catch(e){}
+}
+/* 老用户补收款码：种子里有、本地为空时自动填入 */
+function backfillQR(){
+  try{
+    const seed=seedDB().settings||{};
+    /* 收款码损坏自动恢复：有值但过短（<20KB）视为损坏 */
+    if(DB.settings.payWx&&DB.settings.payWx.length<20000)DB.settings.payWx='';
+    if(DB.settings.payAli&&DB.settings.payAli.length<20000)DB.settings.payAli='';
+    if(!DB.settings.payWx&&seed.payWx)DB.settings.payWx=seed.payWx;
+    if(!DB.settings.payAli&&seed.payAli)DB.settings.payAli=seed.payAli;
+    saveDB(true);
+  }catch(e){}
+}
+function saveDB(silent){
+  try{localStorage.setItem(DBKEY,JSON.stringify(DB));}
+  catch(e){if(!silent)alert('存储空间已满！请先点右上角「导出备份」保存数据，再删除部分照片后重试。');return false;}
+  writeToFolder();
+  fbPush();
+  return true;
+}
+function exportBackup(){
+  try{
+    const blob=new Blob([JSON.stringify(DB)],{type:'application/json'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='晨丽ERP备份_'+todayStr()+'.json';document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+    DB.settings.lastBackup=new Date().toISOString();saveDB(true);renderBackupBar();
+    toast('备份已下载到本机');
+    if(confirm('备份文件已下载到本机。\n\n浏览器不能直接把文件写进谷歌云盘，需要手动上传这一步。\n现在就打开云盘去上传吗？'))openDrive();
+  }catch(e){alert('导出失败：'+e.message);}
+}
+function importBackup(file){
+  const r=new FileReader();
+  r.onload=()=>{try{
+    const d=JSON.parse(r.result);
+    if(!d||!d.settings||!Array.isArray(d.quotes))throw new Error('bad');
+    if(confirm('导入将覆盖本机全部数据，确定吗？')){DB=d;migrateDB();if(saveDB())location.reload();}
+  }catch(e){alert('备份文件无效，导入失败');}};
+  r.readAsText(file);
+}
+document.getElementById('importFile').addEventListener('change',e=>{if(e.target.files[0])importBackup(e.target.files[0]);e.target.value='';});
+function renderBackupBar(){
+  const lb=DB.settings.lastBackup?('上次备份：'+DB.settings.lastBackup.slice(0,16).replace('T',' ')):'从未备份';
+  $('#backupBar').innerHTML='<span>⚠ 数据仅保存在本机浏览器，请定期导出备份（建议存谷歌云盘）。'+esc(lb)+'</span><button class="btn sm warn" onclick="exportBackup()">立即备份</button><button class="btn sm" onclick="openDrive()">打开云盘</button>';
+}
+
+/* ============ 数据文件夹模式（电脑Chrome） ============
+   把"晨丽ERP数据.json"存在用户指定的本地文件夹（可放在谷歌云盘同步目录），
+   每次保存直接写入文件，云盘桌面版自动同步。file:// 下权限不持久，
+   每次打开文件后需点一下"加载数据文件夹"。（手机浏览器不支持） */
+const DATA_FILENAME='晨丽ERP数据.json';
+let folderHandle=null;
+let __writeChain=Promise.resolve();
+function fsSupported(){ return (typeof window!=='undefined')&&!!window.showDirectoryPicker; }
+function folderModeOn(){ return !!(DB&&DB.settings&&DB.settings.folderMode); }
+function idbOpen(){
+  return new Promise((res,rej)=>{
+    try{
+      const r=indexedDB.open('chenli-erp',1);
+      r.onupgradeneeded=()=>{ r.result.createObjectStore('kv'); };
+      r.onsuccess=()=>res(r.result);
+      r.onerror=()=>rej(r.error||new Error('idb'));
+    }catch(e){ rej(e); }
+  });
+}
+async function idbSet(k,v){
+  const db=await idbOpen();
+  return new Promise((res,rej)=>{
+    const t=db.transaction('kv','readwrite');
+    t.objectStore('kv').put(v,k);
+    t.oncomplete=()=>{ try{db.close();}catch(e){} res(); };
+    t.onerror=()=>rej(t.error||new Error('idb'));
+  });
+}
+async function idbGet(k){
+  const db=await idbOpen();
+  return new Promise((res,rej)=>{
+    const t=db.transaction('kv','readonly');
+    const q=t.objectStore('kv').get(k);
+    q.onsuccess=()=>{ try{db.close();}catch(e){} res(q.result); };
+    q.onerror=()=>rej(q.error||new Error('idb'));
+  });
+}
+async function idbDel(k){
+  const db=await idbOpen();
+  return new Promise((res,rej)=>{
+    const t=db.transaction('kv','readwrite');
+    t.objectStore('kv').delete(k);
+    t.oncomplete=()=>{ try{db.close();}catch(e){} res(); };
+    t.onerror=()=>rej(t.error||new Error('idb'));
+  });
+}
+async function pickFolder(){
+  if(!fsSupported()){ alert('当前浏览器不支持选择文件夹，请用电脑版Chrome打开'); return; }
+  let h=null;
+  try{ h=await window.showDirectoryPicker({mode:'readwrite'}); }
+  catch(e){ if(e&&e.name!=='AbortError')alert('选择文件夹失败：'+(e.message||e)); return; }
+  if(!h)return;
+  folderHandle=h;
+  DB.settings.folderMode=true;
+  DB.settings.folderName=h.name||'';
+  try{ await idbSet('folderHandle',h); }catch(e){}
+  saveDB(true);
+  try{ await __writeChain; }catch(e){}
+  const ok=await loadFromFolder(true);
+  renderFolderBar(); if(curTab==='set')renderSet();
+  toast(ok?'已连接数据文件夹':'已选择文件夹');
+}
+/* 从文件夹读取；initial=true 且文件夹为空时把当前数据写进去 */
+async function loadFromFolder(initial){
+  if(!folderHandle)return false;
+  try{
+    let perm='granted';
+    try{ perm=await folderHandle.queryPermission({mode:'readwrite'}); }catch(e){}
+    if(perm!=='granted'){
+      perm=await folderHandle.requestPermission({mode:'readwrite'});
+      if(perm!=='granted')return false;
+    }
+    let fh=null;
+    try{ fh=await folderHandle.getFileHandle(DATA_FILENAME,{create:false}); }
+    catch(e){ if(initial){ await writeToFolderNow(); return true; } return false; }
+    const f=await fh.getFile();
+    const d=JSON.parse(await f.text());
+    if(!d||!d.settings||!Array.isArray(d.quotes))return false;
+    DB=d; migrateDB();
+    try{ localStorage.setItem(DBKEY,JSON.stringify(DB)); }catch(e){}
+    return true;
+  }catch(e){ return false; }
+}
+function writeToFolderNow(){
+  if(!folderHandle)return Promise.resolve(false);
+  __writeChain=__writeChain.then(async ()=>{
+    try{
+      const fh=await folderHandle.getFileHandle(DATA_FILENAME,{create:true});
+      const w=await fh.createWritable();
+      await w.write(JSON.stringify(DB));
+      await w.close();
+      return true;
+    }catch(e){ return false; }
+  });
+  return __writeChain;
+}
+/* 每次保存顺带写入文件夹（异步串行，不阻塞界面） */
+function writeToFolder(){
+  if(!folderModeOn()||!folderHandle)return;
+  writeToFolderNow();
+}
+async function disconnectFolder(){
+  if(!confirm('断开数据文件夹吗？之后改回只存浏览器本机。'))return;
+  folderHandle=null;
+  DB.settings.folderMode=false; DB.settings.folderName='';
+  try{ await idbDel('folderHandle'); }catch(e){}
+  saveDB(true);
+  renderFolderBar(); renderSet();
+  toast('已断开，改回浏览器本机存储');
+}
+/* 打开文件时尝试静默恢复；不行就显示横条让用户点一下 */
+async function initFolderMode(){
+  renderFolderBar();
+  if(!fsSupported())return;
+  if(!folderModeOn())return;
+  try{
+    const h=await idbGet('folderHandle');
+    if(h){
+      folderHandle=h;
+      let perm='prompt';
+      try{ perm=await h.queryPermission({mode:'readwrite'}); }catch(e){}
+      if(perm==='granted'&&await loadFromFolder(false)){
+        toast('已从数据文件夹加载');
+        go(curTab); renderFolderBar();
+        return;
+      }
+    }
+  }catch(e){}
+  renderFolderBar();
+}
+/* 横条按钮：用户手势，可请求权限；先试存过的 handle，不行再重新选 */
+async function manualLoadFolder(){
+  try{
+    const h=folderHandle||await idbGet('folderHandle');
+    if(h){
+      folderHandle=h;
+      let req='denied';
+      try{ req=await h.requestPermission({mode:'readwrite'}); }catch(e){}
+      if(req==='granted'){
+        DB.settings.folderMode=true;
+        DB.settings.folderName=h.name||DB.settings.folderName||'';
+        if(await loadFromFolder(false)){
+          saveDB(true); go(curTab); renderFolderBar();
+          toast('已从数据文件夹加载'); return;
+        }
+      }
+    }
+  }catch(e){}
+  await pickFolder();
+  renderFolderBar();
+}
+function renderFolderBar(){
+  const bar=$('#folderBar'); if(!bar)return;
+  if(!fsSupported()||!folderModeOn()||folderHandle){ bar.style.display='none'; bar.innerHTML=''; return; }
+  bar.style.display='flex';
+  bar.innerHTML='<span>📁 数据文件夹模式已开启，点一下加载 <b>'+esc(DB.settings.folderName||'')+'</b> 里的数据</span><button class="btn sm pri" onclick="manualLoadFolder()">加载数据文件夹</button>';
+}
+
+/* ============ Firebase 云同步（免费版） ============
+   设置里粘贴 Firebase 配置后启用：数据存 Firestore，文件存 Storage。
+   未配置时完全不影响本机使用。 */
+let fbApp=null,fbDb=null,fbStorage=null,fbReady=false,fbPushTimer=null,fbPushing=false;
+function fbCfg(){
+  let t=(DB.settings.fbConfig||'').trim();
+  if(!t)return null;
+  t=t.replace(/^(const|let|var)\s+[\w$]+\s*=\s*/,'').replace(/;+\s*$/,'');
+  try{const c=JSON.parse(t);if(c&&c.apiKey&&c.projectId)return c;}catch(e){}
+  try{
+    const c=JSON.parse(t.replace(/([{,]\s*)([A-Za-z_$][\w$]*)\s*:/g,'$1"$2":'));
+    if(c&&c.apiKey&&c.projectId)return c;
+  }catch(e){}
+  return null;
+}
+function loadFbSdk(){
+  if(typeof firebase!=='undefined'&&firebase.firestore)return Promise.resolve(true);
+  const urls=[
+    'https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js',
+    'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js',
+    'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js',
+    'https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js'
+  ];
+  return urls.reduce((p,u)=>p.then(()=>new Promise((res,rej)=>{
+    const s=document.createElement('script');s.src=u;s.onload=()=>res();s.onerror=()=>rej(new Error('组件加载失败'));
+    document.head.appendChild(s);
+  })),Promise.resolve()).then(()=>true);
+}
+async function fbInit(silent){
+  fbReady=false;
+  /* 公开更新页面禁用云同步，防止陌生人访问数据库 */
+  if(location.hostname.indexOf('github.io')>=0){fbReady=false;return false;}
+  const cfg=fbCfg(); if(!cfg)return false;
+  try{
+    await loadFbSdk();
+    fbApp=firebase.apps.length?firebase.app():firebase.initializeApp(cfg);
+    await firebase.auth().signInAnonymously();
+    fbDb=firebase.firestore();
+    try{ fbStorage=firebase.storage(); }catch(e){ fbStorage=null; }
+    await fbDb.collection('chenli').doc('meta').get();
+    fbReady=true;
+    if(!silent)toast('云端连接成功');
+    return true;
+  }catch(e){
+    if(!silent)alert('云端连接失败：'+(e.message||e));
+    return false;
+  }
+}
+/* 保存后防抖推送云端（数据超900KB则跳过，避免超限） */
+function fbPush(){
+  if(!fbReady||!fbDb)return;
+  clearTimeout(fbPushTimer);
+  fbPushTimer=setTimeout(async ()=>{
+    if(fbPushing)return; fbPushing=true;
+    try{
+      /* 文件/收款码不进云端：只同步业务数据，保证报价/客户/项目始终能同步 */
+      const cloudSettings=Object.assign({},DB.settings,{payWx:'',payAli:''});
+      const cloudDB=Object.assign({},DB,{media:[],settings:cloudSettings});
+      const json=JSON.stringify(cloudDB);
+      if(json.length>900*1024){ console.warn('数据过大，跳过云同步'); fbPushing=false; return; }
+      const pushMs=Date.now();
+      await fbDb.collection('chenli').doc('maindb').set({data:json,updatedAtMs:pushMs});
+      DB.settings.lastCloudPush=new Date().toISOString();DB.settings._lastPushMs=pushMs;
+    }catch(e){ console.warn('云同步失败',e); }
+    fbPushing=false;
+  },2500);
+}
+/* 打开时若云端更新则拉取 */
+async function fbPull(){
+  if(!fbReady||!fbDb)return false;
+  try{
+    const doc=await fbDb.collection('chenli').doc('maindb').get();
+    if(!doc.exists)return false;
+    const r=doc.data()||{};
+    const remoteTs=r.updatedAtMs||0, localTs=DB.settings.lastCloudTs||0;
+    if(remoteTs>localTs){
+      const d=JSON.parse(r.data);
+      if(d&&d.settings&&Array.isArray(d.quotes)){
+        d.settings.lastCloudTs=remoteTs;
+        const localMedia=DB.media||[]; /* 文件存本机，不随云端覆盖 */
+        const localWx=DB.settings.payWx, localAli=DB.settings.payAli; /* 收款码本机为准 */
+        DB=d; DB.media=localMedia;
+        if(localWx)DB.settings.payWx=localWx;
+        if(localAli)DB.settings.payAli=localAli;
+        migrateDB();
+        try{localStorage.setItem(DBKEY,JSON.stringify(DB));}catch(e){}
+        return true;
+      }
+    }
+  }catch(e){ console.warn('云拉取失败',e); }
+  return false;
+}
+async function fbAutoInit(){
+  if(!fbCfg())return;
+  try{
+    if(await fbInit(true)){
+      if(await fbPull()){ go(curTab); toast('已从云端同步最新数据'); }
+    }
+  }catch(e){}
+}
+async function saveFbConfig(){
+  DB.settings.fbConfig=$('#s_fb').value.trim();
+  if(saveDB()){ renderSet(); await fbInit(false); }
+}
+async function fbTest(){ if(await fbInit(false))toast('云端连接正常'); }
+
+/* ============ 计价核心（必须精确） ============
+   自动：宽≥1000 且 高≥1000 → 投影面积=宽×高/1e6(㎡)；否则 长边=max(宽,高)/1000(m)
+   增项：按数量。手动：area=投影面积，length=延米，qty=按数量 */
+function calcRow(r){
+  const w=num(r.w),h=num(r.h),qty=num(r.qty)||0,up=num(r.unitPrice);
+  let base=0,unit=r.unit||'项',modeLabel='';
+  const hasDim=w>0&&h>0;
+  const qtyMode=(r.mode==='qty')||!hasDim; /* 没填尺寸一律按数量，避免算出0 */
+  if(qtyMode){base=qty;modeLabel=r.extra?'增项·按量':'按数量';}
+  else if(r.mode==='area'){base=w*h/1e6;unit='㎡';modeLabel='投影面积';}
+  else if(r.mode==='length'){base=Math.max(w,h)/1000;unit='m';modeLabel='延米';}
+  else{if(w>=1000&&h>=1000){base=w*h/1e6;unit='㎡';modeLabel='投影面积';}else{base=Math.max(w,h)/1000;unit='m';modeLabel='延米';}}
+  const mult=qtyMode?1:(num(r.qty)||1);
+  const amount=Math.round(base*up*mult*100)/100; /* 每行先四舍五入到分，再汇总 */
+  return{base,unit,modeLabel,amount,qtyMult:mult};
+}
+/* 报价跟进：距报价日期天数 */
+function quoteFollowDays(q){
+  if(!q||!q.date)return 0;
+  const d1=new Date(q.date+'T00:00:00'), d2=new Date();
+  d2.setHours(0,0,0,0);
+  return Math.max(0, Math.round((d2-d1)/86400000));
+}
+function followBadge(q){
+  if(!q||q.status!=='未下单')return '';
+  const d=quoteFollowDays(q);
+  if(d>=7)return '<span class="badge red">急需跟进·'+d+'天</span>';
+  if(d>=3)return '<span class="badge" style="background:#fff3cd;color:#856404">跟进·'+d+'天</span>';
+  return '<span class="mut">'+d+'天</span>';
+}
+function quoteTotals(items,discount){
+  let total=0,extraSum=0,areaSum=0,lenSum=0;
+  for(const r of items){const c=calcRow(r);total+=c.amount;
+    if(r.extra){extraSum+=c.amount;}
+    else{if(c.unit==='㎡')areaSum+=c.base*c.qtyMult;else if(c.unit==='m')lenSum+=c.base*c.qtyMult;}
+  }
+  const disc=num(discount)==0?100:num(discount);
+  const payable=total*disc/100;
+  return{total,extraSum,areaSum,lenSum,payable,disc,
+    earnest:num(DB.settings.earnestDefault),
+    down:payable*0.5-num(DB.settings.earnestDefault),
+    tail:payable*0.5};
+}
+/* 报价编号：CL-BJ-YYYYMMDD-序号（同日递增，防重复） */
+const ERP_VERSION='2026.10.13.1';
+const QUOTE_CATS={dz:'全屋定制',zx:'装修'};
+function quoteCat(q){return QUOTE_CATS[(q&&q.category)]||QUOTE_CATS.dz;}
+function quotePrefix(cat){return cat==='zx'?'CL-ZX-':'CL-DZ-';}
+function nextQuoteNo(cat){
+  cat=cat||'dz';
+  const d=todayStr().replace(/-/g,''),pfx=quotePrefix(cat)+d;let n=0;
+  for(const q of DB.quotes){if((q.no||'').indexOf(pfx)===0){const s=parseInt(q.no.slice(-4),10);if(s>n)n=s;}}
+  return pfx+'-'+String(n+1).padStart(4,'0');
+}
+
+/* ============ 种子数据（张先生 33 条，逐条验算一致） ============ */
+/* [空间,产品,宽,高,深,数量,计价方式,单位,单价,是否增项,备注] */
+const SEED_ITEMS=[
+['门外','鞋柜',810,2305,350,1,'auto','',600,0,''],
+['入户','框带门',1160,2530,80,1,'auto','',280,0,''],
+['入户','墙板',0,0,0,1.67,'qty','m²',158,0,'柜体板做（已减去镜面门方数）'],
+['入户','餐边柜',4310,2620,360,1,'auto','',600,0,'入门处侧柜用门板色做柜身'],
+['入户','增项·骨骼门',0,0,0,9.784,'qty','项',180,1,'已减去中空方数'],
+['入户','增项·台面岩板',0,0,0,1,'qty','项',380,1,'纯白无纹路'],
+['阳台','铝柜下柜',1400,1330,600,1,'auto','',1380,0,'含岩板台面陶瓷盆(骨骼门)'],
+['阳台','铝柜吊柜',1400,1015,370,1,'auto','',1380,0,'骨骼门'],
+['厨房','吊柜',0,0,0,2.115,'qty','m',900,0,'木柜体+铝门'],
+['厨房','铝门',0,0,0,3.22,'qty','m',380,0,'铝门'],
+['厨房','增项·钻孔人工费',0,0,0,1,'qty','项',180,1,'橱柜石头的需钻孔装铰链'],
+['干区','洗手盆柜',870,850,550,1,'auto','',600,0,''],
+['干区','增项·岩板台面+陶瓷盆',0,0,0,1,'qty','项',580,1,'包水龙头配件'],
+['干区','增项·骨骼门',0,0,0,2.9221,'qty','m²',180,1,''],
+['干区','干区储物柜',870,2340,500,1,'auto','',600,0,''],
+['干区','壁柜',405,1570,150,1,'qty','项',600,0,''],
+['次卧1','衣柜',1420,2830,350,1,'auto','',600,0,''],
+['次卧1','书桌+上柜',1360,2830,550,1,'auto','',600,0,'书桌双18叠'],
+['次卧1','飘窗上柜',2195,470,575,1,'auto','',600,0,''],
+['次卧1','榻榻米',1440,2195,400,1,'auto','',600,0,''],
+['次卧1','增项·见光板',0,0,0,2.262,'qty','项',158,1,''],
+['次卧2','衣柜',1795,2830,350,1,'auto','',700,0,'千年舟品牌柜体(侧柜用门板色)'],
+['次卧2','书桌+上柜',1475,2830,550,1,'auto','',700,0,'书桌双18叠(千年舟柜体)'],
+['次卧2','榻榻米',1300,2280,400,1,'auto','',700,0,'千年舟柜体'],
+['次卧2','榻榻米床头柜',1300,1060,550,1,'auto','',700,0,'千年舟柜体'],
+['次卧2','飘窗柜',1385,470,590,1,'auto','',700,0,'千年舟柜体'],
+['主卧','衣柜',3300,2640,550,1,'auto','',700,0,'千年舟柜体(开放柜门板色)'],
+['主卧','书柜',1300,2760,395,1,'auto','',700,0,'千年舟柜体'],
+['主卧','增项·骨骼门',0,0,0,9.012,'qty','项',180,1,''],
+['主卧','增项·骨骼玻璃门',0,0,0,2,'qty','项',138,1,''],
+['主卫','铝柜矮柜',1655,850,570,1,'auto','',1380,0,''],
+['主卫','铝柜侧柜',570,2340,520,1,'auto','',1380,0,''],
+['主卫','增项·圆弧工艺费',0,0,0,1,'qty','项',100,1,'']
+];
+function seedExtraLib(){return [
+  {id:uid('ex'),name:'见光板',unit:'㎡',unitPrice:158,note:'侧面换门板同色'},
+  {id:uid('ex'),name:'抽屉超配',unit:'个',unitPrice:150,note:'超出免费配额'},
+  {id:uid('ex'),name:'超高板材费',unit:'项',unitPrice:200,note:'高度超2400mm'},
+  {id:uid('ex'),name:'门板拉直器',unit:'根',unitPrice:80,note:'超高门板防变形'},
+  {id:uid('ex'),name:'灯带(含变压器)',unit:'米',unitPrice:120,note:'含开关'},
+  {id:uid('ex'),name:'顶封板',unit:'米',unitPrice:100,note:''},
+  {id:uid('ex'),name:'收口条',unit:'米',unitPrice:50,note:''},
+  {id:uid('ex'),name:'隐形拉手',unit:'米',unitPrice:30,note:''},
+  {id:uid('ex'),name:'反弹器',unit:'个',unitPrice:25,note:''},
+  {id:uid('ex'),name:'铰链升级(百隆)',unit:'个',unitPrice:35,note:''},
+  {id:uid('ex'),name:'骨骼门',unit:'项',unitPrice:180,note:''},
+  {id:uid('ex'),name:'骨骼门(按平方)',unit:'m²',unitPrice:180,note:''},
+  {id:uid('ex'),name:'台面岩板',unit:'项',unitPrice:380,note:'纯白无纹路'},
+  {id:uid('ex'),name:'钻孔人工费',unit:'项',unitPrice:180,note:''},
+  {id:uid('ex'),name:'岩板台面+陶瓷盆',unit:'项',unitPrice:580,note:'包水龙头配件'},
+  {id:uid('ex'),name:'见光板',unit:'项',unitPrice:158,note:''},
+  {id:uid('ex'),name:'骨骼玻璃门',unit:'项',unitPrice:138,note:''},
+  {id:uid('ex'),name:'圆弧工艺费',unit:'项',unitPrice:100,note:''}
+];}
+function seedProducts(){return [
+  {id:uid('pd'),name:'定制衣柜·经济型',board:'生态板',door:'配套平板门',hw:'普通铰链+拉手',unitPrice:600,mode:'auto',unit:'㎡',note:''},
+  {id:uid('pd'),name:'定制衣柜·千年舟柜体',board:'千年舟生态板',door:'配套门板',hw:'品牌铰链',unitPrice:700,mode:'auto',unit:'㎡',note:''},
+  {id:uid('pd'),name:'铝合金柜',board:'铝合金',door:'骨骼门/铝门',hw:'铝合金配套五金',unitPrice:1380,mode:'auto',unit:'㎡',note:''},
+  {id:uid('pd'),name:'断桥铝门窗',board:'断桥铝1.8mm',door:'双层中空钢化玻璃',hw:'品牌五金',unitPrice:680,mode:'area',unit:'㎡',note:'装修类'},
+  {id:uid('pd'),name:'铝扣板吊顶',board:'铝扣板',door:'—',hw:'轻钢龙骨',unitPrice:180,mode:'area',unit:'㎡',note:'装修类'},
+  {id:uid('pd'),name:'蜂窝板吊顶',board:'蜂窝大板',door:'—',hw:'专用龙骨',unitPrice:280,mode:'area',unit:'㎡',note:'装修类'},
+  {id:uid('pd'),name:'定制橱柜',board:'',door:'',hw:'',unitPrice:0,mode:'auto',unit:'㎡',note:'定制类'},
+  {id:uid('pd'),name:'定制榻榻米',board:'',door:'',hw:'',unitPrice:0,mode:'auto',unit:'㎡',note:'定制类'},
+  {id:uid('pd'),name:'定制书柜/书桌',board:'',door:'',hw:'',unitPrice:0,mode:'auto',unit:'㎡',note:'定制类'},
+  {id:uid('pd'),name:'定制酒柜/餐边柜',board:'',door:'',hw:'',unitPrice:0,mode:'auto',unit:'㎡',note:'定制类'},
+  {id:uid('pd'),name:'定制鞋柜/玄关柜',board:'',door:'',hw:'',unitPrice:0,mode:'auto',unit:'㎡',note:'定制类'},
+  {id:uid('pd'),name:'定制阳台柜',board:'',door:'',hw:'',unitPrice:0,mode:'auto',unit:'㎡',note:'定制类'},
+  {id:uid('pd'),name:'定制浴室柜',board:'',door:'',hw:'',unitPrice:0,mode:'auto',unit:'㎡',note:'定制类'},
+  {id:uid('pd'),name:'定制衣帽间',board:'',door:'',hw:'',unitPrice:0,mode:'auto',unit:'㎡',note:'定制类'},
+  {id:uid('pd'),name:'集成墙板',board:'',door:'—',hw:'',unitPrice:0,mode:'area',unit:'㎡',note:'装修类'},
+  {id:uid('pd'),name:'铝合金推拉门',board:'',door:'',hw:'',unitPrice:0,mode:'area',unit:'㎡',note:'装修类'},
+  {id:uid('pd'),name:'卫生间玻璃隔断',board:'',door:'',hw:'',unitPrice:0,mode:'area',unit:'㎡',note:'装修类'}
+];}
+function seedDB(){
+  const items=SEED_ITEMS.map(a=>({id:uid('it'),space:a[0],name:a[1],w:a[2],h:a[3],d:a[4],qty:a[5],mode:a[6],unit:a[7],unitPrice:a[8],extra:!!a[9],note:a[10]}));
+  const custId=uid('cu'),projId=uid('pj'),quoteId=uid('qu');
+  return{
+    customers:[{id:custId,name:'张先生',phone:'',address:'',source:'',createdAt:'2026-09-30'}],
+    projects:[{id:projId,customerId:custId,community:'利豪花园',houseNo:'7栋1404',status:'跟进中',createdAt:'2026-09-30'}],
+    quotes:[{id:quoteId,no:'CL-BJ-20260930-0001',version:'V1',projectId:projId,customerId:custId,date:'2026-09-30',status:'未下单',discount:100,items:items,createdAt:'2026-09-30'}],
+    contracts:[],payments:[],
+    media:[],extraLib:seedExtraLib(),products:seedProducts(),
+    settings:{earnestDefault:3000,driveUrl:'',bankName:'农业银行（南海大沥支行）',bankAccount:'**** **** **** **** ***',bankHolder:'李志勤',quoteNote:'报价以本版本明细及双方确认内容为准。后续尺寸、材料、颜色、数量或工艺发生变化，双方确认增项后据实调整金额。',taxNote:'本报价为未税价；如需开具发票，相关税费按实际适用政策及双方约定另行确认。',warrantyNote:'具体质保范围与期限以合同及产品配置约定为准。',payWx:'data:image/png;base64,PLACEHOLDER_QR',payAli:'data:image/png;base64,PLACEHOLDER_QR',lastBackup:'',fbConfig:'{"apiKey":"AIzaSyCLNuFiglsXvfdRd_RXOeE94VqPENP0MDA","authDomain":"chenli-erp.firebaseapp.com","projectId":"chenli-erp","storageBucket":"chenli-erp.firebasestorage.app","messagingSenderId":"924770441461","appId":"1:924770441461:web:620bddfbf114ad3d08cdbc"}'},
+    checkins:{},reviews:{},seeded:true
+  };
+}
+
+/* ============ 路由 ============ */
+const TABS=[['dash','工作台'],['cust','客户项目'],['quote','报价'],['contract','合同'],['pay','收付款'],['media','图片档案'],['check','打卡复盘'],['set','设置']];
+let curTab='dash';
+function renderTabs(){$('#tabs').innerHTML=TABS.map(t=>'<button class="'+(t[0]===curTab?'on':'')+'" onclick="go(\''+t[0]+'\')">'+t[1]+'</button>').join('')}
+function go(t){curTab=t;renderTabs();({dash:renderDash,cust:renderCust,quote:renderQuoteList,contract:renderContract,pay:renderPay,media:renderMedia,check:renderCheck,set:renderSet})[t]()}
+const custName=id=>{const c=DB.customers.find(x=>x.id===id);return c?c.name:'—'};
+const projName=id=>{const p=DB.projects.find(x=>x.id===id);return p?(p.community+' '+(p.houseNo||'')):'—'};
+const quotePaid=qid=>DB.payments.filter(p=>p.quoteId===qid).reduce((s,p)=>s+num(p.amount),0);
+
+/* ============ 工作台 ============ */
+function renderDash(){
+  let unpaid=0;const rows=[];
+  for(const q of DB.quotes){
+    const t=quoteTotals(q.items,q.discount);const paid=quotePaid(q.id);const rest=t.payable-paid;
+    if(rest>0.005&&q.status!=='已作废'){unpaid+=rest;rows.push({q,rest});}
+  }
+  rows.sort((a,b)=>b.rest-a.rest);
+  $('#app').innerHTML=
+  '<div class="card"><h2>待收款汇总 · '+fmt(unpaid)+'</h2>'+
+  (rows.length?'<table class="tbl"><tr><th>报价编号</th><th>客户</th><th class="r">应收</th><th class="r">已收</th><th class="r">待收</th></tr>'+
+   rows.slice(0,20).map(r=>{const t=quoteTotals(r.q.items,r.q.discount);const paid=quotePaid(r.q.id);
+    return'<tr><td><a href="javascript:openQuote(\''+r.q.id+'\')">'+esc(r.q.no)+'</a></td><td>'+esc(custName(r.q.customerId))+'</td><td class="r">'+fmt(t.payable)+'</td><td class="r">'+fmt(paid)+'</td><td class="r" style="color:var(--red);font-weight:700">'+fmt(r.rest)+'</td></tr>'}).join('')+'</table>':'<p class="mut">暂无待收款</p>')+'</div>'+
+  '<div class="card"><h2>本月经营</h2>'+
+  (function(){var now=new Date(),ym=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+   var qn=0,qa=0,dn=0,da=0;
+   DB.quotes.forEach(function(q){if((q.date||'').slice(0,7)===ym&&q.status!=='已作废'){var t=quoteTotals(q.items,q.discount);qn++;qa+=t.payable;
+     if(q.status==='已下单'||q.status==='已完成'){dn++;da+=t.payable;}}});
+   var paym=0;DB.payments.forEach(function(p){if((p.date||'').slice(0,7)===ym)paym+=num(p.amount);});
+   var rate=qn?Math.round(dn/qn*100):0;
+   return '<div class="grid2">'+
+   '<div class="kv"><span>报价单数</span><b>'+qn+'</b></div>'+
+   '<div class="kv"><span>报价金额</span><b>'+fmt(qa)+'</b></div>'+
+   '<div class="kv"><span>成交单数</span><b>'+dn+'</b></div>'+
+   '<div class="kv"><span>成交金额</span><b>'+fmt(da)+'</b></div>'+
+   '<div class="kv"><span>本月回款</span><b style="color:var(--green)">'+fmt(paym)+'</b></div>'+
+   '<div class="kv"><span>转化率</span><b>'+rate+'%</b></div></div>';})()+'</div>'+
+  '<div class="card"><h2>待安装派工</h2>'+
+  (function(){var f=DB.projects.filter(function(p){return p.installer&&p.status!=='已完成'&&p.status!=='已作废';}).sort(function(a,b){return (a.instDate||'9999')<(b.instDate||'9999')?-1:1;});
+   if(!f.length)return '<p class="mut">暂无派工记录</p>';
+   return '<table class="tbl"><tr><th>项目</th><th>师傅</th><th>日期</th><th class="r">工费</th></tr>'+
+   f.slice(0,10).map(function(p){
+    return '<tr><td>'+esc(p.community+' '+(p.houseNo||''))+'</td><td>'+esc(p.installer||'')+'</td><td>'+esc(p.instDate||'—')+'</td><td class="r">'+(p.instFee?'¥'+esc(p.instFee):'—')+'</td></tr>';}).join('')+'</table>';})()+'</div>'+
+  '<div class="card"><h2>待跟进报价</h2>'+
+  (function(){var f=DB.quotes.filter(function(q){return q.status==='未下单'&&quoteFollowDays(q)>=3;}).sort(function(a,b){return quoteFollowDays(b)-quoteFollowDays(a);});
+   if(!f.length)return '<p class="mut">暂无超3天未跟进的报价</p>';
+   return '<table class="tbl"><tr><th>报价编号</th><th>客户</th><th class="r">金额</th><th>跟进</th></tr>'+
+   f.slice(0,10).map(function(q){var t=quoteTotals(q.items,q.discount);
+    return '<tr><td><a href="javascript:openQuote(\''+q.id+'\')">'+esc(q.no)+'</a></td><td>'+esc(custName(q.customerId))+'</td><td class="r">'+fmt(t.payable)+'</td><td>'+followBadge(q)+'</td></tr>';}).join('')+'</table>';})()+'</div>'+
+  '<div class="grid2">'+
+  '<div class="card"><h2>快捷入口</h2><div class="row"><button class="btn pri" onclick="newQuote(null,\'dz\')">＋ 定制报价</button><button class="btn" onclick="newQuote(null,\'zx\')">＋ 装修报价</button><button class="btn" onclick="go(\'cust\')">＋ 新增客户</button><button class="btn" onclick="go(\'pay\')">登记收款</button></div></div>'+
+  '<div class="card"><h2>数据概览</h2>'+
+  '<div class="kv"><span>客户</span><b>'+DB.customers.length+'</b></div>'+
+  '<div class="kv"><span>项目</span><b>'+DB.projects.length+'</b></div>'+
+  '<div class="kv"><span>报价单</span><b>'+DB.quotes.length+'</b></div>'+
+  '<div class="kv"><span>收款笔数</span><b>'+DB.payments.length+'</b></div></div></div>';
+}
+
+/* ============ 项目进度阶段 ============ */
+const PROJ_STAGES=[
+  {k:'measure',t:'量尺'},{k:'design',t:'设计'},{k:'quote',t:'报价'},{k:'order',t:'下单'},
+  {k:'produce',t:'生产'},{k:'deliver',t:'送货安装'},{k:'paid',t:'收尾款'},{k:'done',t:'完工'}
+];
+function projProgress(p){
+  const pr=(p&&p.progress)||{};
+  const done=PROJ_STAGES.filter(s=>pr[s.k]).length;
+  const cur=PROJ_STAGES.find(s=>!pr[s.k]);
+  return {done:done,total:PROJ_STAGES.length,cur:cur?cur.t:'完工'};
+}
+/* ============ 客户/项目 ============ */
+let custEditId=null,projCustFilter='',comboMode=false;
+function renderCust(){
+  const cs=DB.customers.slice().reverse();
+  let topCard;
+  if(comboMode){
+    topCard='<div class="card"><div class="row between"><h2>新建客户+项目</h2><button class="btn sm" onclick="comboMode=false;renderCust()">分开建</button></div><div class="grid2">'+
+    '<label class="f"><span>客户姓名 *</span><input id="cc_name"></label>'+
+    '<label class="f"><span>电话</span><input id="cc_phone"></label>'+
+    '<label class="f"><span>地址</span><input id="cc_addr"></label>'+
+    '<label class="f"><span>来源</span><input id="cc_src" placeholder="如：老客户介绍"></label>'+
+    '<label class="f"><span>小区 *</span><input id="cc_comm"></label>'+
+    '<label class="f"><span>房号</span><input id="cc_house"></label>'+
+    '<label class="f"><span>项目状态</span><select id="cc_status">'+['跟进中','已下单','已完成','已作废'].map(s=>'<option>'+s+'</option>').join('')+'</select></label>'+
+    '</div><div class="row"><button class="btn pri" onclick="saveCombo()">保存（客户+项目）</button></div></div>';
+  }else{
+    topCard='<div class="card"><div class="row between"><h2>'+(custEditId?'编辑客户':'新增客户')+'</h2><button class="btn sm pri" onclick="comboMode=true;renderCust()">＋ 客户+项目一起建</button></div><div class="grid2">'+
+    '<label class="f"><span>姓名 *</span><input id="c_name"></label>'+
+    '<label class="f"><span>电话</span><input id="c_phone"></label>'+
+    '<label class="f"><span>地址</span><input id="c_addr"></label>'+
+    '<label class="f"><span>来源</span><input id="c_src" placeholder="如：老客户介绍"></label></div>'+
+    '<div class="row"><button class="btn pri" onclick="saveCust()">保存客户</button>'+(custEditId?'<button class="btn" onclick="custEditId=null;renderCust()">取消</button>':'')+'</div></div>';
+  }
+  $('#app').innerHTML= topCard+
+  '<div class="card"><h2>客户列表（'+cs.length+'）</h2><div class="tablewrap"><table class="tbl"><tr><th>姓名</th><th>电话</th><th>项目</th><th>操作</th></tr>'+
+  cs.map(c=>{const ps=DB.projects.filter(p=>p.customerId===c.id);
+    return'<tr><td><b>'+esc(c.name)+'</b><div class="mut">'+esc(c.address||'')+'</div></td><td>'+esc(c.phone||'—')+'</td><td>'+(ps.map(p=>esc(p.community+' '+(p.houseNo||''))).join('<br>')||'<span class="mut">—</span>')+'</td>'+
+    '<td style="white-space:nowrap"><button class="btn sm" onclick="editCust(\''+c.id+'\')">编辑</button> <button class="btn sm" onclick="newProj(\''+c.id+'\')">＋项目</button> <button class="btn sm danger" onclick="delCust(\''+c.id+'\')">删</button></td></tr>'}).join('')+
+  '</table></div></div><div id="projBox"></div>';
+  if(custEditId){const c=DB.customers.find(x=>x.id===custEditId);$('#c_name').value=c.name;$('#c_phone').value=c.phone||'';$('#c_addr').value=c.address||'';$('#c_src').value=c.source||'';}
+  renderProjBox(projCustFilter);
+}
+function saveCust(){
+  const name=$('#c_name').value.trim();if(!name){alert('请填写姓名');return}
+  const d={name,phone:$('#c_phone').value.trim(),address:$('#c_addr').value.trim(),source:$('#c_src').value.trim()};
+  if(custEditId){Object.assign(DB.customers.find(x=>x.id===custEditId),d);toast('已保存');}
+  else{DB.customers.push(Object.assign({id:uid('cu'),createdAt:todayStr()},d));toast('客户已新增');}
+  custEditId=null;saveDB();renderCust();
+}
+function editCust(id){custEditId=id;renderCust();window.scrollTo(0,0)}
+function saveCombo(){
+  const name=$('#cc_name').value.trim();if(!name){alert('请填写客户姓名');return}
+  const comm=$('#cc_comm').value.trim();if(!comm){alert('请填写小区');return}
+  const c={id:uid('cu'),name:name,phone:$('#cc_phone').value.trim(),address:$('#cc_addr').value.trim(),source:$('#cc_src').value.trim(),createdAt:todayStr()};
+  DB.customers.push(c);
+  DB.projects.push({id:uid('pj'),customerId:c.id,community:comm,houseNo:$('#cc_house').value.trim(),status:$('#cc_status').value,progress:{},createdAt:todayStr()});
+  saveDB();comboMode=false;renderCust();toast('客户+项目已创建');
+}
+function delCust(id){
+  if(!confirm('删除该客户及名下项目/报价/收款？谨慎操作！'))return;
+  const pids=DB.projects.filter(p=>p.customerId===id).map(p=>p.id);
+  DB.customers=DB.customers.filter(x=>x.id!==id);
+  DB.projects=DB.projects.filter(x=>x.customerId!==id);
+  const qids=DB.quotes.filter(q=>q.customerId===id).map(q=>q.id);
+  DB.quotes=DB.quotes.filter(x=>x.customerId!==id);
+  DB.payments=DB.payments.filter(x=>qids.indexOf(x.quoteId)<0);
+  DB.media=DB.media.filter(x=>pids.indexOf(x.projectId)<0);
+  saveDB();renderCust();toast('已删除');
+}
+let projEdit=null;
+function newProj(cid){projCustFilter=cid;projEdit={customerId:cid};renderProjBox(cid);setTimeout(()=>$('#pj_comm')&&$('#pj_comm').focus(),50)}
+function renderProjBox(cid){
+  const box=$('#projBox');if(!box)return;
+  const list=cid?DB.projects.filter(p=>p.customerId===cid):DB.projects;
+  let h='<div class="card"><h2>项目'+(cid?'（'+esc(custName(cid))+'）':'')+'</h2>';
+  if(projEdit){
+    const pePr=(projEdit.progress)||{};
+    h+='<div class="grid2"><label class="f"><span>小区 *</span><input id="pj_comm" value="'+esc(projEdit.community||'')+'"></label>'+
+    '<label class="f"><span>房号</span><input id="pj_house" value="'+esc(projEdit.houseNo||'')+'"></label>'+
+    '<label class="f"><span>安装师傅</span><input id="pj_installer" value="'+esc(projEdit.installer||'')+'" placeholder="如：李师傅"></label>'+
+    '<label class="f"><span>派工日期</span><input id="pj_instdate" type="date" value="'+esc(projEdit.instDate||'')+'"></label>'+
+    '<label class="f"><span>预计天数</span><input id="pj_instdays" type="text" inputmode="numeric" value="'+esc(projEdit.instDays||'')+'" placeholder="天"></label>'+
+    '<label class="f"><span>安装费（元）</span><input id="pj_instfee" type="text" inputmode="decimal" value="'+esc(projEdit.instFee||'')+'"></label>'+
+    '<label class="f"><span>状态</span><select id="pj_status">'+['跟进中','已下单','已完成','已作废'].map(s=>'<option'+(projEdit.status===s?' selected':'')+'>'+s+'</option>').join('')+'</select></label></div>'+
+    '<div class="f"><span>项目进度（勾选已完成的步骤）</span><div class="row" style="flex-wrap:wrap;gap:10px;margin-top:6px">'+PROJ_STAGES.map(s=>'<label style="display:flex;align-items:center;gap:4px;font-size:13px;white-space:nowrap"><input type="checkbox" id="pj_st_'+s.k+'"'+(pePr[s.k]?' checked':'')+'> '+s.t+'</label>').join('')+'</div></div>'+
+    '<div class="row"><button class="btn pri" onclick="saveProj()">保存项目</button><button class="btn" onclick="projEdit=null;renderProjBox(projCustFilter)">取消</button></div>';
+  }else{h+='<div class="row" style="margin-bottom:8px"><button class="btn sm" onclick="newProj(projCustFilter||DB.customers[0]&&DB.customers[0].id)">＋ 新增项目</button></div>'}
+  h+='<table class="tbl"><tr><th>项目</th><th>客户</th><th>状态</th><th>进度</th><th>操作</th></tr>'+
+    list.slice().reverse().map(p=>{const pp=projProgress(p);
+    return'<tr><td><b>'+esc(p.community+' '+(p.houseNo||''))+'</b>'+(p.installer?'<div class="mut">🔧 '+esc(p.installer)+(p.instDate?' · '+esc(p.instDate):'')+(p.instFee?' · ¥'+esc(p.instFee):'')+'</div>':'')+'</td><td>'+esc(custName(p.customerId))+'</td><td><span class="badge'+(p.status==='已作废'?' red':p.status==='跟进中'?'':'')+'">'+esc(p.status)+'</span></td>'+
+    '<td style="min-width:110px"><div class="mut">'+pp.done+'/'+pp.total+' · '+esc(pp.cur)+'</div><div style="background:#eee;border-radius:4px;height:6px;margin-top:4px"><div style="background:var(--pri);height:6px;border-radius:4px;width:'+Math.round(pp.done/pp.total*100)+'%"></div></div></td>'+
+    '<td style="white-space:nowrap"><button class="btn sm" onclick="projEdit=DB.projects.find(x=>x.id===\''+p.id+'\');renderProjBox(projCustFilter)">编辑</button> <button class="btn sm pri" onclick="newQuote(\''+p.id+'\')">报价</button> <button class="btn sm" onclick="printAccept(\''+p.id+'\')">验收单</button></td></tr>'}).join('')+'</table></div>';
+  box.innerHTML=h;
+}
+function saveProj(){
+  const c=$('#pj_comm').value.trim();if(!c){alert('请填写小区');return}
+  const pr={};PROJ_STAGES.forEach(s=>{const el=$('#pj_st_'+s.k);pr[s.k]=!!(el&&el.checked);});
+  Object.assign(projEdit,{community:c,houseNo:$('#pj_house').value.trim(),status:$('#pj_status').value,progress:pr,
+    installer:$('#pj_installer').value.trim(),instDate:$('#pj_instdate').value,instDays:$('#pj_instdays').value.trim(),instFee:$('#pj_instfee').value.trim()});
+  if(!projEdit.id){projEdit.id=uid('pj');projEdit.createdAt=todayStr();DB.projects.push(projEdit);}
+  projEdit=null;saveDB();renderCust();toast('项目已保存');
+}
+
+/* ============ 报价中心 ============ */
+let qEdit=null,qSaving=false;
+let quoteSearch='',quoteCatFilter='';
+let mergeSel=[];
+function mergeToggle(id,checked){
+  if(checked){if(mergeSel.indexOf(id)<0)mergeSel.push(id);}
+  else{mergeSel=mergeSel.filter(x=>x!==id);}
+}
+function mergeToggleAll(checked){
+  const qs=DB.quotes.slice().reverse();
+  mergeSel=checked?qs.map(q=>q.id):[];
+  renderQuoteList();
+}
+function renderQuoteList(){
+  setTimeout(function(){var s=document.getElementById('q_catf');if(s&&s.options.length===0){s.innerHTML='<option value="">全部分类</option>'+Object.keys(QUOTE_CATS).map(function(k){return '<option value="'+k+'">'+QUOTE_CATS[k]+'</option>';}).join('');s.value=quoteCatFilter;}},0);
+  let qs=DB.quotes.slice().reverse();
+  if(quoteCatFilter)qs=qs.filter(function(q){return (q.category||'dz')===quoteCatFilter;});
+  const kw=(quoteSearch||'').trim();
+  if(kw){qs=qs.filter(q=>(q.no+' '+custName(q.customerId)+' '+projName(q.projectId)).indexOf(kw)>=0);}
+  $('#app').innerHTML='<div class="card"><div class="row between"><h2>报价单（'+qs.length+'）</h2><span class="row"><select id="q_catf" onchange="quoteCatFilter=this.value;renderQuoteList();" style="max-width:90px"></select><input id="q_kw" placeholder="搜编号/客户/小区" value="'+esc(quoteSearch)+'" style="max-width:160px" oninput="quoteSearch=this.value;renderQuoteList();var _i=document.querySelector(\'#q_kw\');if(_i){_i.focus();_i.setSelectionRange(_i.value.length,_i.value.length);}"><button class="btn pri" onclick="newQuote(null,\'dz\')">＋ 定制报价</button><button class="btn" onclick="newQuote(null,\'zx\')">＋ 装修报价</button><button class="btn" onclick="printQuotesMerge(mergeSel)">🖨 合并打印</button></span></div>'+
+  '<div class="tablewrap"><table class="tbl"><tr><th style="width:30px"><input type="checkbox" onclick="mergeToggleAll(this.checked)"></th><th>编号/版本</th><th>客户·项目</th><th class="r">金额</th><th>状态</th><th>跟进</th><th>操作</th></tr>'+
+  qs.map(q=>{const t=quoteTotals(q.items,q.discount);
+   return'<tr><td><input type="checkbox" onchange="mergeToggle(\''+q.id+'\',this.checked)" '+(mergeSel.indexOf(q.id)>=0?'checked':'')+'></td><td><b>'+esc(q.no)+'</b> <span class="badge" style="font-size:11px">'+esc(quoteCat(q))+'</span><div class="mut">'+esc(q.version||'')+' · '+esc(q.date||'')+'</div></td><td>'+esc(custName(q.customerId))+'<div class="mut">'+esc(projName(q.projectId))+'</div></td>'+
+   '<td class="r"><b>'+fmt(t.payable)+'</b></td><td><span class="badge'+(q.status==='未下单'?' red':'')+'">'+esc(q.status||'')+'</span></td><td>'+followBadge(q)+'</td>'+
+   '<td style="white-space:nowrap"><button class="btn sm" onclick="openQuote(\''+q.id+'\')">打开</button> <button class="btn sm" onclick="duplicateQuote(\''+q.id+'\')">另存版本</button> <button class="btn sm" onclick="printQuote(\''+q.id+'\')">打印</button> <button class="btn sm" onclick="quoteLongImage(\''+q.id+'\')">长图</button> <button class="btn sm danger" onclick="delQuote(\''+q.id+'\')">删</button></td></tr>'}).join('')+
+  '</table></div></div>';
+}
+function newQuote(projId,cat){
+  let customerId='',pId=projId||'';
+  if(pId){const p=DB.projects.find(x=>x.id===pId);customerId=p?p.customerId:'';}
+  qEdit={id:null,no:nextQuoteNo(cat||'dz'),category:cat||'dz',version:'V1',projectId:pId,customerId:customerId,date:todayStr(),status:'未下单',discount:100,items:[],follows:[],_openedAt:Date.now()};
+  renderQuoteEdit();
+}
+function openQuote(id){const q=DB.quotes.find(x=>x.id===id);if(!q)return;qEdit=JSON.parse(JSON.stringify(q));qEdit._openedAt=Date.now();renderQuoteEdit();}
+function delQuote(id){if(!confirm('删除这张报价单？'))return;DB.quotes=DB.quotes.filter(x=>x.id!==id);DB.payments=DB.payments.filter(p=>p.quoteId!==id);saveDB();renderQuoteList();toast('已删除')}
+function duplicateQuote(id){
+  const q=DB.quotes.find(x=>x.id===id);if(!q)return;
+  const nq=JSON.parse(JSON.stringify(q));
+  nq.id=uid('qu');
+  const m=/V(\d+)/.exec(nq.version||'V1');
+  nq.version='V'+((m?parseInt(m[1],10):1)+1);
+  nq.date=todayStr();nq.status='未下单';nq.createdAt=todayStr();
+  nq.items.forEach(r=>{r.id=uid('it');});
+  DB.quotes.push(nq);
+  if(!saveDB())return;
+  toast('已另存为 '+nq.version);
+  openQuote(nq.id);
+}
+function openModal(title,bodyHtml){
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalBody').innerHTML=bodyHtml;
+  document.getElementById('modal').style.display='flex';
+}
+function closeModal(){document.getElementById('modal').style.display='none';}
+/* 增项一键快选 */
+function qQuickExtra(){
+  qReadRows();
+  const list=(DB.extraLib||[]).map(e=>'<button class="btn" style="margin:4px" onclick="qAddExtraFromLib(\''+e.id+'\')">'+esc(e.name)+'<div class="mut">'+fmt(e.unitPrice)+'/'+esc(e.unit)+'</div></button>').join('');
+  openModal('选择增项','<div>'+(list||'<p class="mut">增项库为空，去设置里添加</p>')+'</div>');
+}
+function qAddExtraFromLib(libId){
+  const e=(DB.extraLib||[]).find(x=>x.id===libId);if(!e)return;
+  closeModal();
+  qEdit.items.push({id:uid('it'),space:qEdit.items.length?qEdit.items[qEdit.items.length-1].space:'',name:e.name,w:0,h:0,d:0,qty:1,mode:'qty',unit:e.unit,unitPrice:e.unitPrice,extra:true,cat:qEdit.category||'dz',note:e.note||''});
+  renderQuoteEdit(false);
+  toast('已添加：'+e.name);
+}
+function qAddFollow(){
+  const d=$('#qf_date').value||todayStr(),c=$('#qf_content').value.trim(),n=$('#qf_next').value;
+  if(!c){alert('请填写跟进内容');return;}
+  qReadRows();
+  if(!Array.isArray(qEdit.follows))qEdit.follows=[];
+  qEdit.follows.push({id:uid('fw'),date:d,content:c,nextDate:n,createdAt:Date.now()});
+  saveQuote(true);toast('跟进已记录');
+}
+function qDelFollow(idx){
+  if(!confirm('删除这条跟进记录？'))return;
+  qReadRows();qEdit.follows.splice(idx,1);saveQuote(true);
+}
+function qSetRowCat(id,cat){var r=qEdit.items.find(function(x){return x.id===id;});if(r){r.cat=cat;qReadRows();}}
+function qAddRow(extra){
+  qEdit.items.push({id:uid('it'),space:qEdit.items.length? qEdit.items[qEdit.items.length-1].space : '',name:'',w:0,h:0,d:0,qty:1,mode:'auto',unit:'项',unitPrice:0,extra:!!extra,cat:qEdit.category||'dz',note:''});
+  renderQuoteEdit(true);
+}
+function qDelRow(id){qEdit.items=qEdit.items.filter(r=>r.id!==id);renderQuoteEdit(true)}
+/* 从增项库/产品库一键填入行 */
+function qPickExtra(id,libId){
+  if(!libId)return;
+  const r=qEdit.items.find(x=>x.id===id),e=(DB.extraLib||[]).find(x=>x.id===libId);
+  if(!r||!e)return;
+  qReadRows();
+  r.name=e.name;r.unit=e.unit;r.unitPrice=e.unitPrice;if(!num(r.qty))r.qty=1;r.note=e.note||'';
+  delete r.qtyRaw;delete r.unitPriceRaw;
+  renderQuoteEdit(true);
+}
+function qPickProduct(id,pid){
+  if(!pid)return;
+  const r=qEdit.items.find(x=>x.id===id),p=(DB.products||[]).find(x=>x.id===pid);
+  if(!r||!p)return;
+  qReadRows();
+  r.name=p.name;r.unitPrice=p.unitPrice;r.mode=p.mode||'auto';r.unit=p.unit||'项';
+  const parts=[p.board&&('板材:'+p.board),p.door&&('门板:'+p.door),p.hw&&('五金:'+p.hw)].filter(Boolean);
+  if(parts.length)r.note=(r.note?r.note+'；':'')+parts.join('；');
+  delete r.unitPriceRaw;
+  renderQuoteEdit(true);
+}
+function qMove(id,dir){const i=qEdit.items.findIndex(r=>r.id===id),j=i+dir;if(i<0||j<0||j>=qEdit.items.length)return;const t=qEdit.items[i];qEdit.items[i]=qEdit.items[j];qEdit.items[j]=t;renderQuoteEdit(true)}
+/* 公式计算：支持 1200+300、(1500-200)x2 等；只允许数字和加减乘除括号，其余一律无效 */
+function evalFormula(s){
+  s=String(s==null?'':s).trim().replace(/×/g,'*').replace(/÷/g,'/').replace(/．/g,'.').replace(/。/g,'.');
+  if(!s||!/^[\d\s+\-*/().]+$/.test(s))return NaN;
+  if(/^\d+(\.\d+)?$/.test(s))return parseFloat(s); /* 纯数字直接返回，不依赖动态函数 */
+  try{
+    const v=Function('"use strict";return ('+s+')')();
+    if(typeof v!=='number'||!isFinite(v)||v<0)return NaN;
+    return Math.round(v*1000000)/1000000;
+  }catch(e){return NaN;}
+}
+/* 读取数字格：保留原文显示；公式没写完时沿用上次数值（输入过程不闪零） */
+function readNumCell(r,key,prefix){
+  const el=document.getElementById(prefix+r.id);if(!el)return;
+  const raw=el.value;r[key+'Raw']=raw;
+  const v=evalFormula(raw);if(!isNaN(v))r[key]=v;
+}
+function dispRaw(r,key){const raw=r[key+'Raw'];return (raw!=null&&raw!=='')?raw:(r[key]||'');}
+/* 公式失焦归一化：1+1 → 2（只改显示，数据已正确） */
+function qBlurNorm(el){
+  const raw=(el.value||'').trim(), v=evalFormula(raw);
+  if(raw&&!isNaN(v)&&raw!==String(v))el.value=String(v);
+}
+/* Tab 在明细行内按顺序跳转（不受重渲染干扰） */
+function qTabOrder(){
+  const els=[];
+  if(!qEdit||!qEdit.items)return els;
+  for(const r of qEdit.items){
+    for(const p of ['sp_','nm_','w_','h_','d_','q_','m_','u_','p_','n_']){
+      const el=document.getElementById(p+r.id);
+      if(el)els.push(el);
+    }
+  }
+  return els;
+}
+function qHandleTab(e){
+  if(!e||e.key!=='Tab')return;
+  const els=qTabOrder(), i=els.indexOf(e.target);
+  if(i<0)return;
+  e.preventDefault();
+  const nx=els[(i+(e.shiftKey?-1:1)+els.length)%els.length];
+  if(nx){nx.focus();try{if(nx.select&&nx.type==='text')nx.select();}catch(_){}}
+}
+function qReadRows(){
+  for(const r of qEdit.items){
+    r.space=$('#sp_'+r.id).value;r.name=$('#nm_'+r.id).value;
+    readNumCell(r,'w','w_');readNumCell(r,'h','h_');readNumCell(r,'d','d_');
+    readNumCell(r,'qty','q_');readNumCell(r,'unitPrice','p_');
+    r.mode=$('#m_'+r.id).value;r.unit=$('#u_'+r.id).value;r.note=$('#n_'+r.id).value;var _rc=$('#rc_'+r.id);if(_rc)r.cat=_rc.value||'dz';
+  }
+  qEdit.customerId=$('#q_cust').value;qEdit.projectId=$('#q_proj').value;
+  qEdit.no=$('#q_no').value.trim();qEdit.version=$('#q_ver').value.trim();var _qcv=$('#q_cat');if(_qcv)qEdit.category=_qcv.value||'dz';
+  qEdit.date=$('#q_date').value;qEdit.status=$('#q_status').value;
+  const dRaw=$('#q_disc').value;qEdit.discountRaw=dRaw;
+  const dv=evalFormula(dRaw);if(!isNaN(dv)&&dv>0)qEdit.discount=dv;
+}
+function renderQuoteEdit(keepFocus){
+  let fid=null,fs=0,fe=0;
+  if(keepFocus&&document.activeElement&&document.activeElement.id){
+    fid=document.activeElement.id;
+    try{fs=document.activeElement.selectionStart||0;fe=document.activeElement.selectionEnd||0;}catch(e){}
+  }
+  const ed=qEdit,t=quoteTotals(ed.items,ed.discount);
+  const custOpts=DB.customers.map(c=>'<option value="'+c.id+'"'+(ed.customerId===c.id?' selected':'')+'>'+esc(c.name)+'</option>').join('');
+  const projOpts=DB.projects.filter(p=>!ed.customerId||p.customerId===ed.customerId).map(p=>'<option value="'+p.id+'"'+(ed.projectId===p.id?' selected':'')+'>'+esc(p.community+' '+(p.houseNo||''))+'</option>').join('');
+  let h='<div class="card"><div class="row between"><h2>'+(ed.id?'编辑报价':'新建报价')+'</h2><div class="row"><button class="btn" onclick="renderQuoteList()">返回列表</button></div></div>'+
+  '<div class="grid2">'+
+  '<label class="f"><span>客户 *</span><select id="q_cust" onchange="qReadRows();renderQuoteEdit(true)">'+custOpts+'</select></label>'+
+  '<label class="f"><span>项目 *</span><select id="q_proj">'+projOpts+'</select></label>'+
+  '<label class="f"><span>报价编号 *</span><input id="q_no" value="'+esc(ed.no)+'"></label>'+
+  '<label class="f"><span>版本</span><input id="q_ver" value="'+esc(ed.version||'V1')+'"></label>'+
+  '<label class="f"><span>日期</span><input id="q_date" type="date" value="'+esc(ed.date||todayStr())+'"></label>'+
+  '<label class="f"><span>类别</span><select id="q_cat"></select></label><label class="f"><span>状态</span><select id="q_status">'+['未下单','已下单','已完成','已作废'].map(s=>'<option'+(ed.status===s?' selected':'')+'>'+s+'</option>').join('')+'</select></label>'+
+  '<label class="f"><span>折扣（90=九折，100=不打折）</span><input id="q_disc" type="text" inputmode="decimal" onblur="qBlurNorm(this)" value="'+esc(ed.discountRaw!=null?ed.discountRaw:ed.discount)+'" oninput="qReadRows();renderQuoteEdit(true)"></label>'+
+  '</div></div>';
+  h+='<div class="card"><h2>明细 <span class="mut">填宽/高/数量/单价自动计算 · 支持公式如 1200+300 · 宽高≥1000按投影面积，否则按长边</span></h2><div class="tablewrap"><table class="tbl"><tr><th>空间</th><th>产品</th><th>宽×高×深(mm)</th><th>数量</th><th>计价方式</th><th>单位</th><th>单价</th><th>计价量</th><th class="r">金额</th><th>备注</th><th></th></tr>';
+  for(const r of ed.items){
+    const c=calcRow(r);
+    h+='<tr'+(r.extra?' style="background:#fff8e6"':'')+'><td><input id="sp_'+r.id+'" onkeydown="qHandleTab(event)" value="'+esc(r.space)+'" style="width:56px"><br><select id="rc_'+r.id+'" onchange="qSetRowCat(\''+r.id+'\',this.value)" style="width:62px;font-size:11px"></select></td>'+
+    '<td>'+(r.extra
+      ?'<select onchange="qPickExtra(\''+r.id+'\',this.value)" style="width:96px;margin-bottom:4px"><option value="">增项库…</option>'+(DB.extraLib||[]).map(e=>'<option value="'+e.id+'">'+esc(e.name)+'</option>').join('')+'</select><br>'
+      :'<select onchange="qPickProduct(\''+r.id+'\',this.value)" style="width:96px;margin-bottom:4px"><option value="">产品库…</option>'+(DB.products||[]).map(p=>'<option value="'+p.id+'">'+esc(p.name)+'</option>').join('')+'</select><br>')+
+    '<input id="nm_'+r.id+'" onkeydown="qHandleTab(event)" value="'+esc(r.name)+'" style="width:90px" placeholder="产品名">'+(r.extra?'<div class="mut">增项</div>':'')+'</td>'+
+    '<td style="white-space:nowrap"><input id="w_'+r.id+'" type="text" inputmode="decimal" onblur="qBlurNorm(this)" onkeydown="qHandleTab(event)" value="'+esc(dispRaw(r,'w'))+'" style="width:62px" placeholder="宽" oninput="qReadRows();renderQuoteEdit(true)">×<input id="h_'+r.id+'" type="text" inputmode="decimal" onblur="qBlurNorm(this)" onkeydown="qHandleTab(event)" value="'+esc(dispRaw(r,'h'))+'" style="width:62px" placeholder="高" oninput="qReadRows();renderQuoteEdit(true)">×<input id="d_'+r.id+'" type="text" inputmode="decimal" onblur="qBlurNorm(this)" onkeydown="qHandleTab(event)" value="'+esc(dispRaw(r,'d'))+'" style="width:52px" placeholder="深" oninput="qReadRows();renderQuoteEdit(true)"></td>'+
+    '<td><input id="q_'+r.id+'" type="text" inputmode="decimal" onblur="qBlurNorm(this)" onkeydown="qHandleTab(event)" value="'+esc(dispRaw(r,'qty'))+'" style="width:60px" oninput="qReadRows();renderQuoteEdit(true)"></td>'+
+    '<td><select id="m_'+r.id+'" onkeydown="qHandleTab(event)" onchange="qReadRows();renderQuoteEdit(true)" style="width:86px">'+[['auto','自动'],['area','投影面积'],['length','延米'],['qty','按数量']].map(o=>'<option value="'+o[0]+'"'+(r.mode===o[0]?' selected':'')+'>'+o[1]+'</option>').join('')+'</select><div class="mut">'+c.modeLabel+'</div></td>'+
+    '<td><input id="u_'+r.id+'" onkeydown="qHandleTab(event)" value="'+esc(r.unit)+'" style="width:44px"></td>'+
+    '<td><input id="p_'+r.id+'" type="text" inputmode="decimal" onblur="qBlurNorm(this)" onkeydown="qHandleTab(event)" value="'+esc(dispRaw(r,'unitPrice'))+'" style="width:70px" placeholder="单价" oninput="qReadRows();renderQuoteEdit(true)"></td>'+
+    '<td class="r">'+fmt3(c.base*c.qtyMult)+' '+esc(c.unit)+'</td><td class="r"><b>'+fmt(c.amount)+'</b></td>'+
+    '<td><input id="n_'+r.id+'" onkeydown="qHandleTab(event)" value="'+esc(r.note||'')+'" style="width:80px" placeholder="备注"></td>'+
+    '<td style="white-space:nowrap"><button class="btn sm" onclick="qMove(\''+r.id+'\',-1)">↑</button><button class="btn sm" onclick="qMove(\''+r.id+'\',1)">↓</button><button class="btn sm danger" onclick="qDelRow(\''+r.id+'\')">删</button></td></tr>';
+  }
+  h+='</table></div><div class="row" style="margin-top:10px"><button class="btn" onclick="qReadRows();qAddRow(false)">＋ 加一行</button><button class="btn warn" onclick="qQuickExtra()">＋ 加增项</button></div></div>';
+  h+='<div class="card"><h2>合计</h2>'+
+  '<div class="kv"><span>定制柜总计价量（面积+延米，不含增项）</span><b>'+fmt3(t.areaSum+t.lenSum)+'</b></div>'+
+  '<div class="kv"><span>其中延米</span><b>'+fmt3(t.lenSum)+' m</b></div>'+
+  '<div class="kv"><span>其中增项</span><b>'+fmt(t.extraSum)+'</b></div>'+
+  '<div class="kv"><span>折扣</span><b>'+t.disc+'%</b></div>'+
+  '<div class="kv" style="font-size:17px"><span>报价合计</span><b style="color:var(--red)">'+fmt(t.payable)+'</b></div>'+
+  '<h3>付款约定（随总价联动）</h3>'+
+  '<div class="kv"><span>设计诚意金（可抵扣）</span><b>'+fmt(t.earnest)+'</b></div>'+
+  '<div class="kv"><span>下单款（累计50%扣诚意金）</span><b>'+fmt(t.down)+'</b></div>'+
+  '<div class="kv"><span>安装验收尾款</span><b>'+fmt(t.tail)+'</b></div>'+
+  '<div class="card" style="margin-top:12px"><h2>📝 跟进记录</h2>'+
+  '<div id="qFollows">'+
+  (ed.follows||[]).map(function(f,idx){
+    return '<div class="row" style="margin-bottom:8px;padding:8px;background:#f9f9f9;border-radius:6px"><div style="flex:1"><b>'+esc(f.date||'')+'</b>　'+esc(f.content||'')+(f.nextDate?'<div class="mut">下次跟进：'+esc(f.nextDate)+'</div>':'')+'</div><button class="btn sm danger" onclick="qDelFollow('+idx+')">删</button></div>';
+  }).join('')+
+  '</div>'+
+  '<div class="grid2" style="margin-top:8px">'+
+  '<label class="f"><span>跟进日期</span><input id="qf_date" type="date" value="'+todayStr()+'"></label>'+
+  '<label class="f"><span>下次跟进</span><input id="qf_next" type="date"></label>'+
+  '</div>'+
+  '<label class="f" style="margin-top:8px"><span>跟进内容</span><input id="qf_content" placeholder="如：电话沟通，客户说再比比价"></label>'+
+  '<button class="btn" style="margin-top:8px" onclick="qAddFollow()">＋ 添加跟进</button></div>'+
+  '<div class="row" style="margin-top:12px"><button class="btn pri" id="qSaveBtn" onclick="saveQuote()">保存报价</button><button class="btn" onclick="previewPrint()">打印预览</button>'+(ed.id?'<button class="btn" onclick="makeContract(\''+ed.id+'\')">生成合同</button>':'<span class="mut">保存后可生成合同</span>')+'</div></div>';
+  $('#app').innerHTML=h;
+  var _qc=document.getElementById('q_cat');
+  if(_qc&&_qc.options.length===0){
+    _qc.innerHTML=Object.keys(QUOTE_CATS).map(function(k){return '<option value="'+k+'">'+QUOTE_CATS[k]+'</option>';}).join('');
+    _qc.value=ed.category||'dz';
+  qEdit.items.forEach(function(r){
+    var s=document.getElementById('rc_'+r.id);
+    if(s&&s.options.length===0){
+      s.innerHTML=Object.keys(QUOTE_CATS).map(function(k){return '<option value="'+k+'">'+QUOTE_CATS[k]+'</option>';}).join('');
+      s.value=r.cat||'dz';
+    }
+  });
+    _qc.onchange=function(){qReadRows();qEdit.category=this.value;qEdit.no=nextQuoteNo(this.value);document.getElementById('q_no').value=qEdit.no;};
+  }
+  if(fid){const el=document.getElementById(fid);if(el){try{el.focus();if(el.setSelectionRange)el.setSelectionRange(fs,fe);}catch(e){}}}
+}
+async function saveQuote(){
+  if(qSaving)return;qSaving=true;const btn=$('#qSaveBtn');if(btn)btn.disabled=true;
+  try{
+    qReadRows();
+    if(!qEdit.customerId||!qEdit.projectId){alert('请选择客户和项目');return}
+    if(!qEdit.no){alert('请填写报价编号');return}
+    if(DB.quotes.some(q=>q.no===qEdit.no&&q.id!==qEdit.id)){alert('报价编号重复，请更换');return}
+    if(!qEdit.items.length){alert('请至少添加一行明细');return}
+    /* 双设备冲突检查：云端在你打开之后被别的设备保存过 */
+    if(qEdit.id&&fbReady&&fbDb){
+      try{
+        const doc=await fbDb.collection('chenli').doc('maindb').get();
+        if(doc.exists){
+          const cloudTs=(doc.data()||{}).updatedAtMs||0;
+          if(cloudTs>(qEdit._openedAt||0)&&cloudTs!==(DB.settings._lastPushMs||0)){
+            if(!confirm('另一台设备在你打开之后保存过数据，现在保存会覆盖云端的内容。\n\n确定要覆盖吗？（点"取消"可先下拉刷新再编辑）'))return;
+          }
+        }
+      }catch(e){}
+    }
+    if(qEdit.id){const i=DB.quotes.findIndex(q=>q.id===qEdit.id);DB.quotes[i]=JSON.parse(JSON.stringify(qEdit));}
+    else{qEdit.id=uid('qu');qEdit.createdAt=todayStr();DB.quotes.push(JSON.parse(JSON.stringify(qEdit)));}
+    qEdit._openedAt=Date.now();
+    if(saveDB()){toast('报价已保存');renderQuoteList();}
+  }finally{qSaving=false;if(btn)btn.disabled=false;}
+}
+function previewPrint(){qReadRows();if(!DB.settings.hidePrintTip){showPrintTip();return;}printQuote(null,qEdit)}
+function showPrintTip(){
+  const ov=document.createElement('div');
+  ov.id='printTipOv';
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px';
+  ov.innerHTML='<div style="background:#fff;border-radius:12px;padding:22px;max-width:420px;line-height:1.8">'+
+    '<h3 style="margin:0 0 10px">打印前做一步：去掉网址行</h3>'+
+    '<div>那行 <span style="color:#c00">file:///…</span> 是浏览器自己加的，网页代码关不掉，但你<strong>只需要关一次</strong>，浏览器会记住：</div>'+
+    '<div style="background:#f6f6f6;border-radius:8px;padding:10px 12px;margin:10px 0">点打印后，在左侧找到<br><strong>「页眉和页脚」</strong> → <strong>取消勾选</strong></div>'+
+    '<label style="display:block;margin:8px 0"><input type="checkbox" id="ptip_hide"> 下次不再提示</label>'+
+    '<div style="text-align:right"><button class="btn pri" id="ptip_go">去打印</button></div></div>';
+  document.body.appendChild(ov);
+  ov.querySelector('#ptip_go').onclick=function(){
+    if(ov.querySelector('#ptip_hide').checked){DB.settings.hidePrintTip=true;saveDB(true);}
+    ov.remove();printQuote(null,qEdit);
+  };
+}
+
+/* 打印：收款码 + 银行转账信息 */
+/* 报价单长图（微信分享）：SVG转PNG，零依赖 */
+function escXml(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function quoteLongImage(qid){
+  const q=DB.quotes.find(x=>x.id===qid);if(!q)return;
+  const t=quoteTotals(q.items,q.discount);
+  const W=750;let y=0;const parts=[];
+  // 背景
+  // 头部
+  parts.push('<rect x="0" y="0" width="'+W+'" height="108" fill="#1a1a2e"/>');
+  parts.push(T(W/2,44,'晨丽全屋定制','#fff',1,'middle').replace('font-size="44"','font-size="30"'));
+  parts.push('<text x="'+(W/2)+'" y="80" font-size="20" fill="#ddd" text-anchor="middle" font-family="sans-serif">客户报价单</text>');
+  y=108;
+  // meta
+  parts.push('<rect x="0" y="'+y+'" width="'+W+'" height="64" fill="#f5f5f5"/>');
+  const cust=custName(q.customerId), proj=projName(q.projectId);
+  parts.push('<text x="24" y="'+(y+26)+'" font-size="17" fill="#333" font-family="sans-serif">'+escXml('客户：'+cust)+'</text>');
+  parts.push('<text x="24" y="'+(y+50)+'" font-size="17" fill="#333" font-family="sans-serif">'+escXml('项目：'+proj)+'</text>');
+  parts.push('<text x="'+(W-24)+'" y="'+(y+26)+'" font-size="15" fill="#666" text-anchor="end" font-family="sans-serif">'+escXml(q.no+' / '+(q.version||''))+'</text>');
+  parts.push('<text x="'+(W-24)+'" y="'+(y+50)+'" font-size="15" fill="#666" text-anchor="end" font-family="sans-serif">'+escXml(q.date||'')+'</text>');
+  y+=64;
+  // 表头
+  const cols=[['产品',24,180],['尺寸/数量',204,200],['计价量',404,110],['单价',514,110],['金额',624,126]];
+  parts.push('<rect x="0" y="'+y+'" width="'+W+'" height="36" fill="#e8e8e8"/>');
+  cols.forEach(c=>{parts.push('<text x="'+(c[1]+8)+'" y="'+(y+24)+'" font-size="16" font-weight="700" fill="#222" font-family="sans-serif">'+c[0]+'</text>');});
+  y+=36;
+  // 明细
+  ['dz','zx'].forEach(function(cat){
+    const catItems=q.items.filter(r=>(r.cat||'dz')===cat);
+    if(!catItems.length)return;
+    let catSum=0,catArea=0;
+    parts.push('<rect x="0" y="'+y+'" width="'+W+'" height="34" fill="#d9e2f3"/>');
+    parts.push('<text x="24" y="'+(y+23)+'" font-size="16" font-weight="700" fill="#222" font-family="sans-serif">【'+escXml(QUOTE_CATS[cat])+'】</text>');
+    y+=34;
+    const spaces=[];catItems.forEach(r=>{const s=r.space||'未分组';if(spaces.indexOf(s)<0)spaces.push(s);});
+    spaces.forEach(sp=>{
+      parts.push('<rect x="0" y="'+y+'" width="'+W+'" height="30" fill="#f0f0f0"/>');
+      parts.push('<text x="24" y="'+(y+21)+'" font-size="15" font-weight="700" fill="#333" font-family="sans-serif">'+escXml(sp)+'</text>');
+      y+=30;
+      catItems.filter(r=>(r.space||'未分组')===sp).forEach(r=>{
+        const c=calcRow(r);catSum+=c.amount;
+        if(c.unit==='㎡')catArea+=c.base*c.qtyMult;
+        const dim=(r.w||r.h)?(r.w+'×'+r.h+(r.d?'×'+r.d:'')):(r.qty?('数量'+r.qty):'—');
+        const nm=r.name.length>10?r.name.slice(0,10)+'…':r.name;
+        parts.push('<line x1="0" y1="'+y+'" x2="'+W+'" y2="'+y+'" stroke="#ddd"/>');
+        parts.push('<text x="32" y="'+(y+23)+'" font-size="15" fill="#222" font-family="sans-serif">'+escXml(nm)+'</text>');
+        parts.push('<text x="212" y="'+(y+23)+'" font-size="14" fill="#444" font-family="sans-serif">'+escXml(dim)+'</text>');
+        parts.push('<text x="412" y="'+(y+23)+'" font-size="14" fill="#444" font-family="sans-serif">'+escXml(fmt3(c.base*c.qtyMult)+' '+c.unit)+'</text>');
+        parts.push('<text x="522" y="'+(y+23)+'" font-size="14" fill="#444" font-family="sans-serif">'+escXml(fmt(r.unitPrice))+'</text>');
+        parts.push('<text x="'+(W-24)+'" y="'+(y+23)+'" font-size="15" font-weight="700" fill="#222" text-anchor="end" font-family="sans-serif">'+escXml(fmt(c.amount))+'</text>');
+        y+=34;
+      });
+    });
+    parts.push('<rect x="0" y="'+y+'" width="'+W+'" height="32" fill="#fff8e6"/>');
+    parts.push('<text x="'+(W-24)+'" y="'+(y+22)+'" font-size="15" font-weight="700" fill="#222" text-anchor="end" font-family="sans-serif">'+escXml(QUOTE_CATS[cat]+'小计：'+fmt(catSum)+(catArea>0?'（'+fmt3(catArea)+'㎡）':''))+'</text>');
+    y+=32;
+  });
+  // 合计
+  parts.push('<rect x="0" y="'+y+'" width="'+W+'" height="8" fill="#1a1a2e"/>');y+=8;
+  if(t.disc!==100){
+    parts.push('<text x="24" y="'+(y+28)+'" font-size="16" fill="#666" font-family="sans-serif">总金额：'+fmt(t.total)+'</text>');
+    parts.push('<text x="'+(W-24)+'" y="'+(y+28)+'" font-size="16" fill="#c00" text-anchor="end" font-family="sans-serif">优惠：-'+fmt(t.total-t.payable)+'（'+t.disc+'折）</text>');
+    y+=34;
+  }
+  parts.push('<text x="24" y="'+(y+32)+'" font-size="20" font-weight="700" fill="#222" font-family="sans-serif">报价合计</text>');
+  parts.push('<text x="'+(W-24)+'" y="'+(y+32)+'" font-size="24" font-weight="700" fill="#c00" text-anchor="end" font-family="sans-serif">'+fmt(t.payable)+'</text>');
+  y+=52;
+  // 收款码
+  if(DB.settings.payWx||DB.settings.payAli){
+    parts.push('<rect x="0" y="'+y+'" width="'+W+'" height="150" fill="#fff"/>');
+    parts.push('<text x="24" y="'+(y+28)+'" font-size="16" font-weight="700" fill="#222" font-family="sans-serif">扫码付款</text>');
+    let qx=24;
+    if(DB.settings.payWx){parts.push('<image x="'+qx+'" y="'+(y+40)+'" width="100" height="100" href="'+escXml(DB.settings.payWx)+'"/>');qx+=130;}
+    if(DB.settings.payAli){parts.push('<image x="'+qx+'" y="'+(y+40)+'" width="100" height="100" href="'+escXml(DB.settings.payAli)+'"/>');}
+    y+=150;
+  }
+  // 付款
+  parts.push('<rect x="0" y="'+y+'" width="'+W+'" height="64" fill="#f5f5f5"/>');
+  parts.push('<text x="24" y="'+(y+26)+'" font-size="15" fill="#444" font-family="sans-serif">'+escXml('诚意金 '+fmt(t.earnest)+'  ·  下单款 '+fmt(t.down)+'  ·  尾款 '+fmt(t.tail))+'</text>');
+  parts.push('<text x="24" y="'+(y+50)+'" font-size="14" fill="#888" font-family="sans-serif">晨丽全屋定制'+'</text>');
+  y+=64;
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+y+'"><rect width="'+W+'" height="'+y+'" fill="#fff"/>'+parts.join('')+'</svg>';
+  // 转PNG
+  const img=new Image();
+  img.onload=function(){
+    const cv=document.createElement('canvas');cv.width=W;cv.height=y;
+    const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,W,y);
+    ctx.drawImage(img,0,0);
+    const url=cv.toDataURL('image/png');
+    openModal('报价单长图','<p class="mut">长按图片保存，发到微信给客户</p><img src="'+url+'" style="width:100%;border:1px solid #ddd;border-radius:8px"><div class="row" style="margin-top:10px"><a class="btn pri" href="'+url+'" download="报价单_'+q.no+'.png">下载图片</a></div>');
+  };
+  img.onerror=function(){alert('图片生成失败，请用打印功能');};
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+function printPayInfo(){
+  const s=DB.settings;
+  const hasQR=!!(s.payWx||s.payAli), hasBank=!!(s.bankName||s.bankAccount);
+  if(!hasQR&&!hasBank)return '';
+  let h='<div style="font-weight:700;margin:10px 0 6px">付款方式</div><div style="display:flex;gap:36px;align-items:flex-start;margin-bottom:8px">';
+  if(hasQR){
+    h+='<div style="display:flex;gap:26px">';
+    if(s.payWx)h+='<div style="text-align:center"><img src="'+s.payWx+'" style="width:170px"><div style="margin-top:4px">微信收款码</div></div>';
+    if(s.payAli)h+='<div style="text-align:center"><img src="'+s.payAli+'" style="width:170px"><div style="margin-top:4px">支付宝收款码</div></div>';
+    h+='</div>';
+  }
+  if(hasBank){
+    h+='<div style="line-height:2.2;padding-top:6px;font-size:19px">';
+    h+='<div style="font-weight:700;font-size:21px;margin-bottom:4px">银行转账</div>';
+    if(s.bankName)h+='<div>'+esc(s.bankName)+'</div>';
+    if(s.bankAccount)h+='<div>账号 '+esc(s.bankAccount)+'</div>';
+    if(s.bankHolder)h+='<div>户名 '+esc(s.bankHolder)+'</div>';
+    h+='</div>';
+  }
+  return h+'</div>';
+}
+
+/* ============ 报价打印 ============ */
+function printQuoteHTML(q){
+  if(!q)return '';
+  const t=quoteTotals(q.items,q.discount);
+  const cats=['dz','zx'];
+  let rows='';
+  cats.forEach(function(cat){
+    const catItems=q.items.filter(r=>(r.cat||'dz')===cat);
+    if(!catItems.length)return;
+    let catSum=0,catArea=0;
+    rows+='<tr><td colspan=\"6\" style=\"background:#d9e2f3;font-weight:700;font-size:15px\">【'+esc(QUOTE_CATS[cat])+'】</td></tr>';
+    const spaces=[];catItems.forEach(r=>{const s=r.space||'未分组';if(spaces.indexOf(s)<0)spaces.push(s);});
+    spaces.forEach(sp=>{
+      let sub=0;const rs=catItems.filter(r=>(r.space||'未分组')===sp);
+      rows+='<tr><td colspan=\"6\" style=\"background:#f0f0f0;font-weight:700\">'+esc(sp)+'</td></tr>';
+      rs.forEach(r=>{const c=calcRow(r);sub+=c.amount;catSum+=c.amount;
+        if(c.unit==='㎡')catArea+=c.base*c.qtyMult;
+        const dim=(r.w||r.h)?(r.w+'×'+r.h+(r.d?'×'+r.d:'')):(r.qty?('数量：'+r.qty):'—');
+        rows+='<tr><td>'+esc(r.name)+'</td><td>'+dim+'</td><td>'+esc(r.note||'—')+'</td><td class=\"pr\">'+fmt3(c.base*c.qtyMult)+' '+esc(c.unit)+'</td><td class=\"pr\">'+fmt(r.unitPrice)+'</td><td class=\"pr\">'+fmt(c.amount)+'</td></tr>';
+      });
+      rows+='<tr><td colspan=\"5\" class=\"pr\" style=\"font-weight:700\">空间小计</td><td class=\"pr\" style=\"font-weight:700\">'+fmt(sub)+'</td></tr>';
+    });
+    rows+='<tr><td colspan=\"6\" class=\"pr\" style=\"font-weight:700;background:#fff8e6\">'+esc(QUOTE_CATS[cat])+'合计：'+fmt(catSum)+(catArea>0?'（共'+fmt3(catArea)+'㎡）':'')+'</td></tr>';
+  });
+  const _h='<div class="psheet"><h1>晨丽全屋定制</h1>'+
+  '<div style="text-align:center">客户报价单 · '+esc(quoteCat(q))+'</div>'+
+  '<div class="pmeta"><span>项目：'+esc(projName(q.projectId))+'</span><span>'+esc(q.no)+' / '+esc(q.version||'')+'</span></div>'+
+  '<div class="pmeta"><span>客户：'+esc(custName(q.customerId))+'</span><span>报价日期：'+esc(q.date||'')+'</span></div>'+
+  '<table><thead><tr><th>产品</th><th>尺寸mm/数量</th><th>配置与备注</th><th>计价量</th><th>单价</th><th>金额</th></tr></thead>'+rows+'</table>'+
+  '<div class="pmeta"><span>总计价量：'+fmt3(t.areaSum+t.lenSum)+'</span><span>其中增项：'+fmt(t.extraSum)+'</span></div>'+
+  (t.disc!==100?'<div class="pmeta"><span>总金额</span><span>'+fmt(t.total)+'</span></div><div class="pmeta"><span>优惠金额（'+t.disc+'折）</span><span>-'+fmt(t.total-t.payable)+'</span></div>':'')+
+  '<div class="pmeta" style="font-size:16px;font-weight:700"><span>报价合计</span><span>'+fmt(t.payable)+(t.disc!==100?'（'+t.disc+'折）':'')+'</span></div>'+
+  '<table><thead><tr><th>付款阶段</th><th>说明</th><th>金额</th></tr></thead>'+
+  '<tr><td>设计诚意金</td><td>已付后抵扣货款</td><td class="pr">'+fmt(t.earnest)+'</td></tr>'+
+  '<tr><td>下单款</td><td>累计货款50%（'+fmt(t.payable*0.5)+'），扣除可抵扣诚意金后本次应付</td><td class="pr">'+fmt(t.down)+'</td></tr>'+
+  '<tr><td>安装验收尾款</td><td>剩余货款</td><td class="pr">'+fmt(t.tail)+'</td></tr></table>'+
+  printPayInfo()+
+  '<div class="pnote">'+esc(DB.settings.quoteNote)+'\n'+esc(DB.settings.taxNote)+'\n'+esc(DB.settings.warrantyNote)+'</div>'+
+  '<div class="psign"><span>客户确认：____________</span><span>经办人：____________</span><span>日期：____________</span></div><div class="pfoot">晨丽全屋定制</div></div>';
+  return _h;
+}
+function printQuote(id,draft){
+  const q=draft||DB.quotes.find(x=>x.id===id);if(!q)return;
+  $('#printArea').innerHTML=printQuoteHTML(q);window.print();
+}
+function printQuotesMerge(ids){
+  const qs=ids.map(id=>DB.quotes.find(x=>x.id===id)).filter(Boolean);
+  if(!qs.length){alert('请先勾选要合并的报价单');return;}
+  if(qs.length===1){printQuote(qs[0].id);return;}
+  $('#printArea').innerHTML=qs.map(q=>printQuoteHTML(q)).join('<div style="page-break-before:always"></div>');
+  window.print();toast('已合并'+qs.length+'张报价单');
+}
+
+/* ============ 合同 ============ */
+function renderContract(){
+  const qs=DB.quotes.slice().reverse();
+  const cs=DB.contracts.slice().reverse();
+  $('#app').innerHTML='<div class="card"><div class="row between"><h2>合同（'+cs.length+'）</h2></div>'+
+  '<div class="row"><select id="ct_q" style="max-width:320px">'+qs.map(q=>'<option value="'+q.id+'">'+esc(q.no+' · '+custName(q.customerId))+'</option>').join('')+'</select><button class="btn pri" onclick="makeContract()">从报价生成合同</button></div></div>'+
+  '<div class="card"><div class="tablewrap"><table class="tbl"><tr><th>合同编号</th><th>关联报价</th><th>客户</th><th class="r">金额</th><th>操作</th></tr>'+
+  cs.map(c=>{const q=DB.quotes.find(x=>x.id===c.quoteId);const t=q?quoteTotals(q.items,q.discount):null;
+   return'<tr><td><b>'+esc(c.no)+'</b><div class="mut">'+esc(c.date||'')+'</div></td><td>'+esc(q?q.no:'—')+'</td><td>'+esc(custName(c.customerId))+'</td><td class="r">'+(t?fmt(t.payable):'—')+'</td>'+
+   '<td style="white-space:nowrap"><button class="btn sm" onclick="editContract(\''+c.id+'\')">编辑</button> <button class="btn sm" onclick="printContract(\''+c.id+'\')">打印</button> <button class="btn sm danger" onclick="delContract(\''+c.id+'\')">删</button></td></tr>'}).join('')+'</table></div></div><div id="ctBox"></div>';
+}
+let ctEdit=null;
+function makeContract(qid){
+  const qid2=qid||$('#ct_q').value;const q=DB.quotes.find(x=>x.id===qid2);if(!q){alert('请先选择报价');return}
+  if(DB.contracts.some(c=>c.quoteId===qid2)){if(!confirm('该报价已有合同，继续生成新合同吗？'))return}
+  const t=quoteTotals(q.items,q.discount);
+  const cust=DB.customers.find(x=>x.id===q.customerId)||{},proj=DB.projects.find(x=>x.id===q.projectId)||{};
+  ctEdit={id:uid('ct'),no:'CL-HT-'+todayStr().replace(/-/g,'')+'-'+String(DB.contracts.length+1).padStart(3,'0'),
+    quoteId:qid2,customerId:q.customerId,projectId:q.projectId,date:todayStr(),
+    partyA:cust.name||'',partyAPhone:cust.phone||'',partyAAddr:cust.address||((proj.community||'')+' '+(proj.houseNo||'')),
+    partyB:'晨丽全屋定制',partyBPhone:'',partyBAddr:'',
+    period:(q.category==='zx'?'20':'45'),startDate:'',materials:(q.category==='zx'?'门窗：断桥铝型材（壁厚1.8mm）；玻璃：双层中空钢化；吊顶：铝扣板/蜂窝板，按报价配置':'柜体：生态板/多层板（E0级）；门板按报价配置；五金：品牌铰链、阻尼配件'),
+    warranty:DB.settings.warrantyNote,amount:t.payable,notes:'',
+    breach:'1.乙方逾期完工，每逾期一日按合同金额0.5‰向甲方支付违约金；逾期超30日，甲方有权解除合同。2.甲方逾期付款，每逾期一日按应付金额0.5‰支付违约金；逾期超30日，乙方有权暂停施工，工期顺延。'};
+  DB.contracts.push(ctEdit);saveDB();editContract(ctEdit.id);toast('合同已生成');
+}
+function editContract(id){
+  ctEdit=DB.contracts.find(x=>x.id===id);const c=ctEdit;
+  $('#ctBox').innerHTML='<div class="card"><h2>编辑合同 '+esc(c.no)+'</h2><div class="grid2">'+
+  '<label class="f"><span>甲方（客户）</span><input id="ct_a" value="'+esc(c.partyA||'')+'"></label>'+
+  '<label class="f"><span>甲方电话</span><input id="ct_ap" value="'+esc(c.partyAPhone||'')+'"></label>'+
+  '<label class="f"><span>甲方地址</span><input id="ct_aa" value="'+esc(c.partyAAddr||'')+'"></label>'+
+  '<label class="f"><span>乙方</span><input id="ct_b" value="'+esc(c.partyB||'')+'"></label>'+
+  '<label class="f"><span>乙方电话</span><input id="ct_bp" value="'+esc(c.partyBPhone||'')+'"></label>'+
+  '<label class="f"><span>乙方地址</span><input id="ct_ba" value="'+esc(c.partyBAddr||'')+'"></label>'+
+  '<label class="f"><span>工期（天）</span><input id="ct_p" value="'+esc(c.period||'')+'"></label>'+
+  '<label class="f"><span>开工日期</span><input id="ct_sd" type="date" value="'+esc(c.startDate||'')+'"></label>'+
+  '<label class="f"><span>签订日期</span><input id="ct_d" type="date" value="'+esc(c.date)+'"></label>'+
+  '<label class="f"><span>材料标准</span><textarea id="ct_m">'+esc(c.materials||'')+'</textarea></label>'+
+  '<label class="f"><span>质保条款</span><textarea id="ct_w">'+esc(c.warranty||'')+'</textarea></label>'+
+  '<label class="f"><span>违约责任</span><textarea id="ct_br">'+esc(c.breach||'')+'</textarea></label>'+
+  '<label class="f"><span>补充约定</span><textarea id="ct_n">'+esc(c.notes||'')+'</textarea></label></div>'+
+  '<div class="row"><button class="btn pri" onclick="saveContract()">保存</button><button class="btn" onclick="printContract(\''+c.id+'\')">打印</button></div></div>';
+  window.scrollTo(0,document.body.scrollHeight);
+}
+function saveContract(){
+  Object.assign(ctEdit,{partyA:$('#ct_a').value,partyAPhone:$('#ct_ap').value,partyAAddr:$('#ct_aa').value,partyB:$('#ct_b').value,partyBPhone:$('#ct_bp').value,partyBAddr:$('#ct_ba').value,period:$('#ct_p').value,startDate:$('#ct_sd').value,date:$('#ct_d').value,materials:$('#ct_m').value,warranty:$('#ct_w').value,breach:$('#ct_br').value,notes:$('#ct_n').value});
+  saveDB();ctEdit=null;renderContract();toast('合同已保存');
+}
+function delContract(id){if(!confirm('删除该合同？'))return;DB.contracts=DB.contracts.filter(x=>x.id!==id);saveDB();renderContract()}
+function printContract(id){
+  const c=DB.contracts.find(x=>x.id===id);if(!c)return;
+  const q=DB.quotes.find(x=>x.id===c.quoteId);const t=q?quoteTotals(q.items,q.discount):{payable:c.amount,earnest:0,down:0,tail:0};
+  const projAddr=esc(c.partyAAddr||projName(c.projectId));
+  const itemsHtml=q?('<table class="tbl"><thead><tr><th>空间</th><th>项目</th><th>规格/数量</th><th class="r">金额</th></tr></thead>'+
+    q.items.map(r=>{const cc=calcRow(r);return'<tr><td>'+esc(r.space||'')+'</td><td>'+esc(r.name||'')+(r.extra?'（增项）':'')+'</td><td>'+(cc.modeLabel||'')+' '+cc.base.toFixed(3)+' '+esc(cc.unit)+'</td><td class="r">'+fmt(cc.amount)+'</td>'}).join('')+
+    '</table><p style="text-align:right">合计：<b>'+fmt(t.payable)+'</b>（其中增项 '+fmt(t.extraSum)+'）</p>'):'';
+  $('#printArea').innerHTML='<div class="psheet"><h1>全屋定制合同</h1>'+
+  '<div class="pmeta"><span>合同编号：'+esc(c.no)+'</span><span>签订日期：'+esc(c.date)+'</span></div>'+
+  '<p><b>甲方（委托方）：</b>'+esc(c.partyA||'')+'　电话：'+esc(c.partyAPhone||'')+'　地址：'+projAddr+'</p>'+
+  '<p><b>乙方（承揽方）：</b>'+esc(c.partyB||'')+'　电话：'+esc(c.partyBPhone||'')+'　地址：'+esc(c.partyBAddr||'')+'</p>'+
+  '<p>甲乙双方经友好协商，就甲方委托乙方定制家具事宜达成如下协议：</p>'+
+  '<p><b>第一条 项目概况</b><br>1.1 项目地址：'+projAddr+'。<br>1.2 定制范围：以本合同附件《报价明细》（编号'+esc(q?q.no:'—')+'）及双方签字确认的图纸为准。</p>'+
+  '<p><b>第二条 产品及价格</b><br>2.1 产品明细见下表，材质、颜色、工艺以报价单及确认图纸为准：</p>'+itemsHtml+
+  '<p>2.2 合同总金额：<b>人民币 '+fmt(t.payable)+' 元</b>。</p>'+
+  '<p><b>第三条 付款方式</b><br>3.1 设计诚意金 '+fmt(t.earnest)+' 元（签订本合同时支付，可抵扣货款）。<br>3.2 下单款 '+fmt(t.down)+' 元（图纸及材料确认后、生产前支付，累计达合同金额50%）。<br>3.3 安装验收尾款 '+fmt(t.tail)+' 元（安装完毕验收合格后付清）。<br>3.4 甲方逾期付款的，乙方有权顺延工期。</p>'+
+  '<p><b>第四条 工期</b><br>4.1 工期 '+esc(c.period||'—')+' 天，自下单款到账且图纸确认之日起算'+(c.startDate?('（预计开工 '+esc(c.startDate)+'）'):'')+'。<br>4.2 因甲方原因（未按时付款、未提供安装条件、变更设计）导致的延误，工期相应顺延。</p>'+
+  '<p><b>第五条 材料标准</b><br>'+esc(c.materials||'按报价单及双方确认的样品/色卡执行')+'</p>'+
+  '<p><b>第六条 甲方权利义务</b><br>6.1 提供准确的现场尺寸及安装条件（水电具备、墙面地面完工）。<br>6.2 按本合同第三条按时足额付款。<br>6.3 图纸签字确认后，原则上不再变更；确需变更的按第八条执行。</p>'+
+  '<p><b>第七条 乙方权利义务</b><br>7.1 按确认图纸、约定材料及工艺组织生产、安装，保证质量符合行业标准。<br>7.2 施工期间遵守小区管理规定，保护甲方现场成品。<br>7.3 安装完毕通知甲方验收，并提供使用保养说明。</p>'+
+  '<p><b>第八条 变更与增项</b><br>8.1 图纸确认后甲方要求变更的，须双方书面确认，费用据实增减，工期相应调整。<br>8.2 施工中发生的增项，须经甲方签字确认后按实结算，未经确认的增项甲方有权拒付。</p>'+
+  '<p><b>第九条 验收</b><br>9.1 安装完毕后乙方通知甲方验收，甲方应在3日内组织验收；逾期未验收视为合格。<br>9.2 验收发现质量问题的，乙方应在约定时间内整改至合格。</p>'+
+  '<p><b>第十条 质保与售后</b><br>'+esc(c.warranty||'按国家相关规定及双方约定执行')+'</p>'+
+  '<p><b>第十一条 违约责任</b><br>'+esc(c.breach||'按《民法典》相关规定执行')+'</p>'+
+  '<p><b>第十二条 争议解决</b><br>本合同履行中发生争议，双方先协商解决；协商不成的，依法向乙方所在地人民法院提起诉讼。</p>'+
+  '<p><b>第十三条 其他</b><br>13.1 本合同一式两份，甲乙双方各执一份，自双方签字（盖章）且甲方支付诚意金后生效。<br>13.2 报价明细、确认图纸作为本合同附件，与本合同具有同等效力。</p>'+
+  (c.notes?'<p><b>第十四条 补充约定</b><br>'+esc(c.notes)+'</p>':'')+
+  '<div class="psign" style="margin-top:24px"><span>甲方签字：____________</span><span>乙方签字：____________</span></div>'+
+  '<div class="psign"><span>电话：____________</span><span>电话：____________</span></div>'+
+  '<div class="psign"><span>日期：____________</span><span>日期：____________</span></div></div>';
+  window.print();
+}
+
+/* ============ 收付款 ============ */
+function renderPay(){
+  const ps=DB.payments.slice().reverse();
+  const qs=DB.quotes.slice().reverse();
+  $('#app').innerHTML='<div class="card"><h2>登记收款</h2><div class="grid2">'+
+  '<label class="f"><span>关联报价 *</span><select id="p_q">'+qs.map(q=>{const t=quoteTotals(q.items,q.discount);return'<option value="'+q.id+'">'+esc(q.no+' · '+custName(q.customerId)+' · 应收'+fmt(t.payable))+'</option>'}).join('')+'</select></label>'+
+  '<label class="f"><span>阶段</span><select id="p_stage">'+['诚意金','下单款','尾款','增项款','其他'].map(s=>'<option>'+s+'</option>').join('')+'</select></label>'+
+  '<label class="f"><span>金额 *</span><input id="p_amt" type="number" step="any" placeholder="0.00"></label>'+
+  '<label class="f"><span>日期</span><input id="p_date" type="date" value="'+todayStr()+'"></label>'+
+  '<label class="f"><span>方式</span><select id="p_method">'+['微信','支付宝','银行转账','现金'].map(s=>'<option>'+s+'</option>').join('')+'</select></label>'+
+  '<label class="f"><span>备注</span><input id="p_note"></label></div>'+
+  '<button class="btn pri" onclick="savePay()">保存收款</button></div>'+
+  '<div class="card"><h2>收款流水（'+ps.length+'）</h2><div class="tablewrap"><table class="tbl"><tr><th>日期</th><th>报价</th><th>阶段</th><th class="r">金额</th><th>方式</th><th>备注</th><th></th></tr>'+
+  ps.map(p=>{const q=DB.quotes.find(x=>x.id===p.quoteId);
+   return'<tr><td>'+esc(p.date||'')+'</td><td>'+esc(q?q.no:'—')+'<div class="mut">'+esc(custName(q?q.customerId:''))+'</div></td><td>'+esc(p.stage)+'</td><td class="r"><b>'+fmt(p.amount)+'</b></td><td>'+esc(p.method||'')+'</td><td>'+esc(p.note||'')+'</td><td><button class="btn sm" onclick="printReceipt(\''+p.id+'\')">收据</button> <button class="btn sm danger" onclick="delPay(\''+p.id+'\')">删</button></td></tr>'}).join('')+'</table></div></div>';
+}
+function savePay(){
+  const amt=num($('#p_amt').value);if(amt<=0){alert('请填写收款金额');return}
+  DB.payments.push({id:uid('pm'),quoteId:$('#p_q').value,stage:$('#p_stage').value,amount:amt,date:$('#p_date').value,method:$('#p_method').value,note:$('#p_note').value.trim(),createdAt:todayStr()});
+  if(saveDB()){toast('收款已登记');renderPay();}
+}
+function delPay(id){if(!confirm('删除这条收款记录？'))return;DB.payments=DB.payments.filter(x=>x.id!==id);saveDB();renderPay()}
+/* 金额大写（人民币） */
+function rmbUpper(n){
+  var D=['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+  n=Math.round(Math.abs(parseFloat(n)||0)*100);
+  if(n===0)return '零元整';
+  var units=['分','角','元','拾','佰','仟','万','拾','佰','仟','亿','拾','佰','仟'];
+  var s=String(n), out=[], zero=false, i, pos, d, u, r;
+  for(i=0;i<s.length;i++){
+    pos=s.length-1-i; d=parseInt(s[i],10); u=units[pos]||'';
+    if(d===0){ if(u==='元'||u==='万'||u==='亿')out.push(u); else if(!zero)out.push('零'); zero=true; }
+    else{ out.push(D[d]+u); zero=false; }
+  }
+  r=out.join('').replace(/零+/g,'零').replace(/零(万|亿)/g,'$1').replace(/亿万/g,'亿');
+  if(r.charAt(r.length-1)==='零')r=r.slice(0,-1);
+  r=r.replace(/零元/,'元').replace(/元零/g,'元');
+  if(!/[分角]$/.test(r))r+='整';
+  return r;
+}
+function printAccept(pid){
+  const p=DB.projects.find(x=>x.id===pid);if(!p)return;
+  const cust=DB.customers.find(x=>x.id===p.customerId)||{};
+  const addr=((p.community||'')+' '+(p.houseNo||'')).trim()||cust.address||'';
+  const qs=DB.quotes.filter(x=>x.projectId===pid&&x.status!=='已作废');
+  const q=qs[qs.length-1];
+  const t=q?quoteTotals(q.items,q.discount):null;
+  $('#printArea').innerHTML='<div class="psheet"><h1>安装验收单</h1>'+
+  '<div class="pmeta"><span>项目：'+esc(addr)+'</span><span>日期：'+todayStr()+'</span></div>'+
+  '<div class="pmeta"><span>客户：'+esc(cust.name||'')+'　'+esc(cust.phone||'')+'</span><span>安装师傅：'+esc(p.installer||'—')+'</span></div>'+
+  (q?'<div class="pmeta"><span>关联报价：'+esc(q.no)+'</span><span>合同金额：'+fmt(t.payable)+'</span></div>':'')+
+  '<table><thead><tr><th style="width:40px">序号</th><th>验收项目</th><th style="width:100px">结果</th><th>备注</th></tr></thead><tbody>'+
+  ['柜体安装牢固、横平竖直','门板开合顺畅、无刮擦','五金配件齐全、功能正常','收口/封板处理到位','现场卫生已清理','增项内容已完成确认'].map((it,i)=>'<tr><td>'+(i+1)+'</td><td>'+it+'</td><td>□合格 □整改</td><td></td></tr>').join('')+
+  '</tbody></table>'+
+  '<p class="pnote">注：客户签字确认后，视为本次安装验收合格。质保按合同约定执行。</p>'+
+  '<div class="psign" style="margin-top:30px"><span>客户签字：____________</span><span>日期：____________</span></div>'+
+  '<div class="psign"><span>安装师傅签字：____________</span><span>经办人：____________</span></div><div class="pfoot">晨丽全屋定制</div></div>';
+  window.print();
+}
+function printReceipt(pid){
+  const p=DB.payments.find(x=>x.id===pid);if(!p)return;
+  const q=DB.quotes.find(x=>x.id===p.quoteId);
+  const cust=DB.customers.find(x=>x.id===(q?q.customerId:''))||{};
+  const proj=DB.projects.find(x=>x.id===(q?q.projectId:''))||{};
+  const addr=((proj.community||'')+' '+(proj.houseNo||'')).trim()||cust.address||'';
+  const rno='SJ-'+(p.date||'').replace(/-/g,'')+'-'+String(DB.payments.indexOf(p)+1).padStart(3,'0');
+  $('#printArea').innerHTML='<div class="psheet"><h1>收款收据</h1>'+
+  '<div class="pmeta"><span>收据编号：'+esc(rno)+'</span><span>日期：'+esc(p.date||'')+'</span></div>'+
+  '<table><thead><tr><th style="width:110px">项目</th><th>内容</th><th style="width:110px">项目</th><th>内容</th></tr></thead><tbody>'+
+  '<tr><td>客户姓名</td><td>'+esc(cust.name||'')+'</td><td>项目地址</td><td>'+esc(addr)+'</td></tr>'+
+  '<tr><td>关联报价</td><td>'+esc(q?q.no:'—')+'</td><td>交款阶段</td><td>'+esc(p.stage||'')+'</td></tr>'+
+  '<tr><td>收款金额</td><td colspan="3"><b>'+fmt(p.amount)+'</b>　大写：'+rmbUpper(p.amount)+'</td></tr>'+
+  (q?(function(){var t=quoteTotals(q.items,q.discount);var paid=quotePaid(q.id);var rest=t.payable-paid;
+   return '<tr><td>报价总额</td><td>'+fmt(t.payable)+'</td><td>累计已收</td><td>'+fmt(paid)+'</td></tr>'+
+   '<tr><td>剩余未收</td><td colspan="3" style="color:var(--red);font-weight:700">'+fmt(rest)+'</td></tr>';})():'')+
+  '<tr><td>收款方式</td><td>'+esc(p.method||'')+'</td><td>备注</td><td>'+esc(p.note||'')+'</td></tr>'+
+  '</tbody></table>'+
+  '<p class="pnote">注：本收据为阶段性收款凭证，最终结算以合同及双方确认的增项为准。</p>'+
+  '<div class="psign" style="margin-top:30px"><span>收款单位（盖章）：晨丽全屋定制</span><span>经手人：____________</span></div>'+
+  '<div class="psign"><span>客户签字：____________</span><span>日期：____________</span></div></div>';
+  window.print();
+}
+
+/* ============ 图片档案 ============ */
+let mediaProj='';
+function renderMedia(){
+  const projs=DB.projects.slice().reverse();
+  if(!mediaProj&&projs.length)mediaProj=projs[0].id;
+  const list=DB.media.filter(m=>!mediaProj||m.projectId===mediaProj).slice().reverse();
+  $('#app').innerHTML='<div class="card"><h2>文件档案 <span class="mut">（图片/PDF/CAD）</span> <span class="mut" id="m_storage"></span></h2>'+
+  '<div class="row"><select id="m_proj" style="max-width:300px" onchange="mediaProj=this.value;renderMedia()">'+projs.map(p=>'<option value="'+p.id+'"'+(mediaProj===p.id?' selected':'')+'>'+esc(custName(p.customerId)+' · '+p.community+' '+(p.houseNo||''))+'</option>').join('')+'</select>'+
+  '<label class="btn pri" style="cursor:pointer">＋ 上传文件<input type="file" id="m_file" multiple hidden></label>'+
+  '<button class="btn" onclick="window.open(\'https://drive.wps.cn\',\'_blank\')">打开WPS云盘</button>'+
+  '<button class="btn pri" onclick="shareFiles()">一键分享到WPS</button>'+
+  '<span class="mut">文件存本机；手机点「一键分享到WPS」直达WPS App；电脑点文件逐个下载后传WPS</span>'+
+  '</div></div>'+
+  '<div class="card"><div class="thumbs">'+
+  (list.length?list.map(m=>{
+    const isImg=((m.mime||'').indexOf('image/')===0)||((m.dataUrl||'').indexOf('data:image')===0);
+    const sizeStr=m.size?(' · '+Math.round(m.size/1024)+'KB'):'';
+    const label='<div class="mut" style="padding:4px 6px">'+esc(m.name||'')+sizeStr+'</div>';
+    const delBtn='<button onclick="delMedia(\''+m.id+'\')">删除</button>';
+    if(isImg&&m.dataUrl)return '<div class="thumb"><img src="'+m.dataUrl+'" loading="lazy" onclick="window.open(\''+m.dataUrl+'\')">'+delBtn+label+'</div>';
+    if(isImg&&m.cloudUrl)return '<div class="thumb"><img src="'+m.cloudUrl+'" loading="lazy" onclick="window.open(\''+m.cloudUrl+'\')">'+delBtn+label+'</div>';
+    const href=m.cloudUrl||m.dataUrl||'#';
+    const ext=esc(((m.name||'').split('.').pop()||'文件').toUpperCase().slice(0,4));
+    return '<div class="thumb"><a href="'+href+'" download="'+esc(m.name||'file')+'" target="_blank" style="display:flex;align-items:center;justify-content:center;height:90px;background:#f5f5f5;font-size:22px;font-weight:700;color:var(--pri);text-decoration:none">'+ext+'</a>'+delBtn+label+'</div>';
+  }).join(''):'<p class="mut">暂无文件</p>')+
+  '</div></div>';
+  $('#m_file').addEventListener('change',e=>{handleFiles(e.target.files);e.target.value='';});
+  try{
+    const kb=Math.round(JSON.stringify(DB).length/1024), pct=Math.min(99,Math.round(kb/5120*100));
+    const el=$('#m_storage');
+    if(el){el.textContent='本机存储约'+kb+'KB（'+pct+'%）';el.style.color=pct>80?'var(--red)':'';}
+  }catch(e){}
+}
+function handleFiles(files){
+  if(!mediaProj){alert('请先选择项目');return}
+  Array.from(files).slice(0,10).forEach(f=>{
+    if((f.type||'').indexOf('image/')===0){
+      const img=new Image();const url=URL.createObjectURL(f);
+      img.onload=()=>{
+        const max=1280;let w=img.width,h=img.height;
+        if(Math.max(w,h)>max){const r=max/Math.max(w,h);w=Math.round(w*r);h=Math.round(h*r);}
+        const cv=document.createElement('canvas');cv.width=w;cv.height=h;
+        cv.getContext('2d').drawImage(img,0,0,w,h);
+        URL.revokeObjectURL(url);
+        saveMediaFile({name:f.name,mime:f.type,size:f.size,dataUrl:cv.toDataURL('image/jpeg',0.82)});
+      };
+      img.onerror=()=>{URL.revokeObjectURL(url);alert('图片读取失败：'+f.name)};
+      img.src=url;
+    }else{
+      if(f.size>8*1024*1024){alert('文件太大（>8MB），跳过：'+f.name);return;}
+      if(f.size>3*1024*1024&&!confirm('文件较大（'+Math.round(f.size/1024/1024)+'MB），会占用本机空间，继续上传吗？\n'+f.name))return;
+      const r=new FileReader();
+      r.onload=()=>saveMediaFile({name:f.name,mime:f.type||'application/octet-stream',size:f.size,dataUrl:r.result});
+      r.onerror=()=>alert('文件读取失败：'+f.name);
+      r.readAsDataURL(f);
+    }
+  });
+}
+/* 保存文件记录：云端就绪时传云存储，否则存本机 */
+function saveMediaFile(info){
+  const rec=Object.assign({id:uid('md'),projectId:mediaProj,createdAt:todayStr()},info);
+  const done=()=>{ DB.media.push(rec); if(saveDB()){toast('文件已保存');renderMedia();} };
+  if(fbReady&&fbStorage){
+    const path='files/'+mediaProj+'/'+rec.id+'_'+(info.name||'file').replace(/[^\w.\-一-\u9fa5]+/g,'_');
+    fbStorage.ref().child(path).put(dataUrlToBlob(info.dataUrl),{contentType:info.mime}).then(snap=>snap.ref.getDownloadURL()).then(url=>{
+      rec.cloudUrl=url; delete rec.dataUrl; done();
+    }).catch(e=>{ console.warn('云存储上传失败，改存本机',e); done(); });
+  }else done();
+}
+function dataUrlToBlob(dataUrl){
+  const arr=dataUrl.split(','),mime=(arr[0].match(/:(.*?);/)||[])[1]||'application/octet-stream';
+  const bin=atob(arr[1]);const u8=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);
+  return new Blob([u8],{type:mime});
+}
+function delMedia(id){if(!confirm('删除这个文件？'))return;delMediaCloud(id);DB.media=DB.media.filter(x=>x.id!==id);saveDB();renderMedia()}
+/* 一键分享文件到WPS/微信等（手机端系统分享） */
+async function shareFiles(){
+  const list=DB.media.filter(m=>!mediaProj||m.projectId===mediaProj);
+  if(!list.length){toast('当前项目暂无文件');return;}
+  let files=[];
+  try{
+    files=list.filter(m=>m.dataUrl).map(m=>new File([dataUrlToBlob(m.dataUrl)],m.name||'file',{type:m.mime||'application/octet-stream'}));
+  }catch(e){ files=[]; }
+  if(!files.length){toast('文件无法分享，请逐个下载');return;}
+  if(navigator.canShare&&navigator.canShare({files:files})){
+    try{ await navigator.share({files:files,title:'晨丽定制-项目文件'}); }
+    catch(e){ if(e&&e.name!=='AbortError')toast('分享未完成'); }
+  }else{
+    toast('当前设备不支持直接分享，请逐个下载后上传到WPS');
+  }
+}
+async function delMediaCloud(id){
+  const m=DB.media.find(x=>x.id===id);
+  if(m&&m.cloudUrl&&fbReady&&fbStorage){
+    try{ await fbStorage.refFromURL(m.cloudUrl).delete(); }catch(e){}
+  }
+}
+
+/* ============ 90天打卡 + 月度复盘 ============ */
+function renderCheck(){
+  const days=[];const now=new Date();
+  for(let i=89;i>=0;i--){const d=new Date(now);d.setDate(d.getDate()-i);days.push(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'));}
+  const done=days.filter(d=>DB.checkins[d]).length;
+  const m=monthStr();
+  $('#app').innerHTML='<div class="card"><h2>90天打卡（已打卡 '+done+'/90 天）</h2><div class="checkgrid">'+
+  days.map(d=>'<button class="'+(DB.checkins[d]?'done':'')+'" onclick="toggleCheck(\''+d+'\')" title="'+d+'">'+d.slice(5)+'</button>').join('')+'</div>'+
+  '<p class="mut" style="margin-top:8px">点击日期格子打卡/取消</p></div>'+
+  '<div class="card"><h2>月度复盘</h2><div class="row"><input type="month" id="rv_m" value="'+m+'" style="max-width:180px" onchange="renderCheck()"></div>'+
+  '<textarea id="rv_t" placeholder="本月复盘：签单、回款、问题、下月计划……">'+esc(DB.reviews[$('#rv_m')?$('#rv_m').value:m]||DB.reviews[m]||'')+'</textarea>'+
+  '<div class="row" style="margin-top:8px"><button class="btn pri" onclick="saveReview()">保存复盘</button></div></div>';
+}
+function toggleCheck(d){DB.checkins[d]=!DB.checkins[d];if(!DB.checkins[d])delete DB.checkins[d];saveDB(true);renderCheck()}
+function saveReview(){const m=$('#rv_m').value;DB.reviews[m]=$('#rv_t').value;if(saveDB())toast('复盘已保存')}
+
+/* ============ 设置 ============ */
+function renderSet(){
+  const s=DB.settings;
+  $('#app').innerHTML='<div class="card"><h2>设置</h2>'+
+  '<div class="pmeta"><span>软件版本：'+ERP_VERSION+'</span><span><button class="btn sm" onclick="checkUpdate()">检查更新</button></span></div>'+
+  '<label class="f"><span>设计诚意金默认值（元）</span><input id="s_earnest" type="number" value="'+s.earnestDefault+'"></label>'+
+  '<label class="f"><span>报价说明（打印）</span><textarea id="s_qn">'+esc(s.quoteNote)+'</textarea></label>'+
+  '<label class="f"><span>税费说明（打印）</span><textarea id="s_tn">'+esc(s.taxNote)+'</textarea></label>'+
+  '<label class="f"><span>质保说明（打印/合同）</span><textarea id="s_wn">'+esc(s.warrantyNote)+'</textarea></label>'+
+  '<div class="row"><button class="btn pri" onclick="saveSet()">保存设置</button></div></div>'+
+  '<div class="card"><h2>云盘备份地址 <span class="mut">（你自己填）</span></h2>'+
+  '<label class="f"><span>云盘文件夹链接（谷歌云盘/任意云盘）</span><input id="s_drive" type="url" placeholder="https://…" value="'+esc(s.driveUrl||'')+'"></label>'+
+  '<p class="mut">把你云盘里放备份的文件夹链接粘到这里。点「导出备份」下载JSON后，点「打开云盘」上传进去；换设备时下载回来再点「导入备份」。</p>'+
+  '<div class="row"><button class="btn pri" onclick="saveSet()">保存设置</button><button class="btn" onclick="openDrive()">打开云盘</button></div></div>'+
+  '<div class="card"><h2>云端同步 <span class="mut">（Firebase免费版 · 手机电脑自动同步）</span></h2>'+
+  '<label class="f"><span>Firebase配置（JSON）</span><textarea id="s_fb" rows="3" placeholder=\'{"apiKey":"...","authDomain":"...","projectId":"...","storageBucket":"...","appId":"..."}\'>'+esc(DB.settings.fbConfig||'')+'</textarea></label>'+
+  '<div class="row"><button class="btn pri" onclick="saveFbConfig()">保存并连接</button><button class="btn" onclick="fbTest()">测试连接</button>'+
+  (fbReady?'<span class="mut">● 云端已连接</span>':'<span class="mut">○ 云端未连接</span>')+
+  (DB.settings.lastCloudPush?'<span class="mut">上次同步：'+esc(DB.settings.lastCloudPush.slice(0,16).replace('T',' '))+'</span>':'')+'</div>'+
+  '<p class="mut">配置后每次保存自动同步云端（报价/客户/项目数据），手机电脑自动一致。文件（图片/PDF/CAD）存本机。不要在两台设备上同时编辑同一条数据。</p></div>'+
+  '<div class="card"><h2>安装为应用 <span class="mut">（手机+电脑，不用应用商店）</span></h2>'+
+  '<p><b>手机（安卓）：</b>把这个HTML文件发到手机 → 用Chrome打开 → 右上角 ⋮ → <b>添加到主屏幕</b> → 以后点桌面图标直接用（记得开代理，数据自动同步）。</p>'+
+  '<p><b>电脑：</b>Chrome打开本文件 → 右上角 ⋮ → 更多工具 → <b>创建快捷方式</b> → 勾选<b>在窗口中打开</b> → 桌面就有独立窗口的客户端了。</p>'+
+  '<p class="mut">这不是应用商店的原生App，但用起来一样：点图标就开、独立窗口。文件有更新时重新传到手机替换即可，数据在云端不会丢。</p></div>'+
+'<div class="card"><h2>产品配置库 <span class="mut">（板材/门板/五金搭配，报价时下拉一键填入）</span></h2><div class="tablewrap"><table class="tbl"><tr><th>产品名</th><th>板材</th><th>门板</th><th>五金</th><th class="r">单价</th><th>计价</th><th>单位</th><th></th></tr>'+
+  (DB.products||[]).map(p=>'<tr><td><b>'+esc(p.name)+'</b>'+(p.note?'<div class="mut">'+esc(p.note)+'</div>':'')+'</td><td>'+esc(p.board||'—')+'</td><td>'+esc(p.door||'—')+'</td><td>'+esc(p.hw||'—')+'</td><td class="r">'+fmt(p.unitPrice)+'</td><td>'+esc({auto:'自动',area:'投影面积',length:'延米',qty:'按数量'}[p.mode]||'自动')+'</td><td>'+esc(p.unit||'')+'</td><td style="white-space:nowrap"><button class="btn sm" onclick="editProduct(\''+p.id+'\')">编辑</button> <button class="btn sm danger" onclick="delProduct(\''+p.id+'\')">删</button></td></tr>').join('')+
+  '</table></div><div class="grid2" style="margin-top:8px">'+
+  '<label class="f"><span>产品名 *</span><input id="pd_name" placeholder="如：定制衣柜·经济型"></label>'+
+  '<label class="f"><span>单价 *</span><input id="pd_price" type="number" step="any" placeholder="元"></label>'+
+  '<label class="f"><span>板材</span><input id="pd_board" placeholder="如：生态板"></label>'+
+  '<label class="f"><span>门板</span><input id="pd_door" placeholder="如：配套平板门"></label>'+
+  '<label class="f"><span>五金</span><input id="pd_hw" placeholder="如：普通铰链+拉手"></label>'+
+  '<label class="f"><span>计价方式</span><select id="pd_mode"><option value="auto">自动</option><option value="area">投影面积</option><option value="length">延米</option><option value="qty">按数量</option></select></label>'+
+  '<label class="f"><span>单位</span><input id="pd_unit" value="㎡" placeholder="㎡/m/项"></label>'+
+  '<label class="f"><span>备注</span><input id="pd_note" placeholder="备注"></label>'+
+  '</div><div class="row" style="margin-top:8px"><button class="btn pri" id="pd_savebtn" onclick="saveProduct()">添加产品</button><button class="btn" id="pd_cancelbtn" style="display:none" onclick="cancelEditProduct()">取消</button></div></div>'+
+  '<div class="card"><h2>常用增项库 <span class="mut">（报价时从增项库下拉选择，一键填入）</span></h2><div class="tablewrap"><table class="tbl"><tr><th>名称</th><th>单位</th><th class="r">单价</th><th>备注</th><th></th></tr>'+
+  (DB.extraLib||[]).map(e=>'<tr><td>'+esc(e.name)+'</td><td>'+esc(e.unit)+'</td><td class="r">'+fmt(e.unitPrice)+'</td><td>'+esc(e.note||'')+'</td><td style="white-space:nowrap"><button class="btn sm" onclick="editExtraLib(\''+e.id+'\')">编辑</button> <button class="btn sm danger" onclick="delExtraLib(\''+e.id+'\')">删</button></td></tr>').join('')+
+  '</table></div><div class="row" style="margin-top:8px;flex-wrap:wrap"><input id="ex_name" placeholder="增项名称" style="max-width:130px"><input id="ex_unit" placeholder="单位" value="项" style="max-width:64px"><input id="ex_price" type="number" step="any" placeholder="单价" style="max-width:86px"><input id="ex_note" placeholder="备注" style="max-width:130px"><button class="btn pri" id="ex_addbtn" onclick="addExtraLib()">添加增项</button><button class="btn" id="ex_cancelbtn" onclick="cancelEditExtra()" style="display:none">取消</button></div></div>'+
+  '<div class="card"><h2>收款码 <span class="mut">（打印报价单时展示）</span></h2><div class="grid2">'+
+  '<div><label class="f"><span>微信收款码</span></label>'+(s.payWx?'<img src="'+s.payWx+'" style="width:140px;border:1px solid var(--line);border-radius:8px">':'<p class="mut">未上传</p>')+'<label class="btn sm" style="cursor:pointer;margin-top:6px">上传/更换<input type="file" id="s_wx" accept="image/*" hidden></label></div>'+
+  '<div><label class="f"><span>支付宝收款码</span></label>'+(s.payAli?'<img src="'+s.payAli+'" style="width:140px;border:1px solid var(--line);border-radius:8px">':'<p class="mut">未上传</p>')+'<label class="btn sm" style="cursor:pointer;margin-top:6px">上传/更换<input type="file" id="s_ali" accept="image/*" hidden></label></div></div></div>'+
+  '<div class="card"><h2>银行转账信息 <span class="mut">（打印报价单时展示）</span></h2>'+
+  '<label class="f"><span>开户银行</span><input id="s_bank" value="'+esc(s.bankName||'')+'" placeholder="如：中国工商银行XX支行"></label>'+
+  '<label class="f"><span>银行账号</span><input id="s_acct" value="'+esc(s.bankAccount||'')+'" placeholder="卡号/账号"></label>'+
+  '<label class="f"><span>户名</span><input id="s_holder" value="'+esc(s.bankHolder||'')+'"></label>'+
+  '<div class="row"><button class="btn pri" onclick="saveSet()">保存设置</button></div></div>'+
+  '<div class="card"><h2 style="color:var(--red)">危险区</h2><div class="row"><button class="btn warn" onclick="exportBackup()">先导出备份</button><button class="btn danger" onclick="wipeAll()">清空本机全部数据</button></div><p class="mut" style="margin-top:8px">清空前务必先导出备份！</p></div>';
+  $('#s_wx').addEventListener('change',e=>{imgToDataUrl(e.target.files[0],400,url=>{DB.settings.payWx=url;saveDB();renderSet()})});
+  $('#s_ali').addEventListener('change',e=>{imgToDataUrl(e.target.files[0],400,url=>{DB.settings.payAli=url;saveDB();renderSet()})});
+}
+function imgToDataUrl(f,max,cb){
+  if(!f)return;const img=new Image();const url=URL.createObjectURL(f);
+  img.onload=()=>{let w=img.width,h=img.height;if(Math.max(w,h)>max){const r=max/Math.max(w,h);w=Math.round(w*r);h=Math.round(h*r);}
+    const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);
+    URL.revokeObjectURL(url);cb(cv.toDataURL('image/jpeg',0.85));};
+  img.src=url;
+}
+function checkUpdate(){
+  const el=document.getElementById('ver_check');
+  if(el)el.innerHTML='<span class="mut">检查中…</span>';
+  fetch('https://lisyu-d.github.io/chenli-erp-updates/version.json?t='+Date.now()).then(r=>r.json()).then(v=>{
+    if(v.version&&v.version!==ERP_VERSION){
+      if(confirm('发现新版本 '+v.version+'（当前'+ERP_VERSION+'）\n'+(v.note||'')+'\n\n是否下载更新？')){
+        const a=document.createElement('a');a.href=v.url||'https://lisyu-d.github.io/chenli-erp-updates/index.html';a.download='chenli-erp-standalone.html';a.click();
+        toast('已开始下载新版，下载后放到启动器目录即可自动更新');
+      }
+    }else{
+      toast('已是最新版本（'+ERP_VERSION+'）');
+    }
+    if(el)el.innerHTML='<button class="btn sm" onclick="checkUpdate()">检查更新</button>';
+  }).catch(e=>{
+    toast('检查失败（需联网），当前版本'+ERP_VERSION);
+    if(el)el.innerHTML='<button class="btn sm" onclick="checkUpdate()">检查更新</button>';
+  });
+}
+function saveSet(){
+  DB.settings.earnestDefault=num($('#s_earnest').value)||3000;
+  DB.settings.driveUrl=$('#s_drive').value.trim();
+  DB.settings.bankName=$('#s_bank').value.trim();
+  DB.settings.bankAccount=$('#s_acct').value.trim();
+  DB.settings.bankHolder=$('#s_holder').value.trim();
+  DB.settings.quoteNote=$('#s_qn').value;DB.settings.taxNote=$('#s_tn').value;DB.settings.warrantyNote=$('#s_wn').value;
+  if(saveDB())toast('设置已保存');
+}
+function openDrive(){
+  const u=(DB.settings.driveUrl||'').trim()||'https://drive.google.com/drive/my-drive';
+  window.open(/^https?:\/\//i.test(u)?u:'https://'+u,'_blank');
+}
+/* 增项库 / 产品库管理 */
+let editExtraId=null;
+function editExtraLib(id){
+  const e=(DB.extraLib||[]).find(x=>x.id===id);if(!e)return;
+  editExtraId=id;
+  $('#ex_name').value=e.name;$('#ex_unit').value=e.unit;$('#ex_price').value=e.unitPrice;$('#ex_note').value=e.note||'';
+  $('#ex_addbtn').textContent='保存修改';$('#ex_cancelbtn').style.display='';
+  $('#ex_name').focus();toast('正在编辑：'+e.name);
+}
+function cancelEditExtra(){
+  editExtraId=null;$('#ex_name').value='';$('#ex_unit').value='项';$('#ex_price').value='';$('#ex_note').value='';
+  $('#ex_addbtn').textContent='添加增项';$('#ex_cancelbtn').style.display='none';
+}
+function addExtraLib(){
+  const n=$('#ex_name').value.trim();if(!n){alert('请填写增项名称');return;}
+  const data={name:n,unit:$('#ex_unit').value.trim()||'项',unitPrice:num($('#ex_price').value)||0,note:$('#ex_note').value.trim()};
+  if(editExtraId){
+    const e=(DB.extraLib||[]).find(x=>x.id===editExtraId);
+    if(e)Object.assign(e,data);
+    editExtraId=null;
+    if(saveDB()){renderSet();toast('已保存修改');}
+  }else{
+    DB.extraLib.push(Object.assign({id:uid('ex')},data));
+    if(saveDB()){renderSet();toast('已加入增项库');}
+  }
+}
+function delExtraLib(id){if(!confirm('删除该增项吗？'))return;DB.extraLib=DB.extraLib.filter(e=>e.id!==id);saveDB();renderSet();}
+let pdEditId=null;
+function editProduct(id){
+  const p=DB.products.find(x=>x.id===id);if(!p)return;
+  pdEditId=id;
+  document.getElementById('pd_name').value=p.name||'';
+  document.getElementById('pd_price').value=p.unitPrice||'';
+  document.getElementById('pd_board').value=p.board||'';
+  document.getElementById('pd_door').value=p.door||'';
+  document.getElementById('pd_hw').value=p.hw||'';
+  document.getElementById('pd_mode').value=p.mode||'auto';
+  document.getElementById('pd_unit').value=p.unit||'㎡';
+  document.getElementById('pd_note').value=p.note||'';
+  document.getElementById('pd_savebtn').textContent='保存修改';
+  document.getElementById('pd_cancelbtn').style.display='';
+  document.getElementById('pd_name').focus();
+  window.scrollTo(0,document.getElementById('pd_name').offsetTop-100);
+}
+function cancelEditProduct(){
+  pdEditId=null;
+  ['pd_name','pd_price','pd_board','pd_door','pd_hw','pd_unit','pd_note'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('pd_mode').value='auto';
+  document.getElementById('pd_savebtn').textContent='添加产品';
+  document.getElementById('pd_cancelbtn').style.display='none';
+}
+function saveProduct(){
+  const name=document.getElementById('pd_name').value.trim();
+  const price=parseFloat(document.getElementById('pd_price').value)||0;
+  if(!name){alert('请填写产品名');return;}
+  if(pdEditId){
+    const p=DB.products.find(x=>x.id===pdEditId);
+    if(p){p.name=name;p.unitPrice=price;p.board=document.getElementById('pd_board').value.trim();p.door=document.getElementById('pd_door').value.trim();p.hw=document.getElementById('pd_hw').value.trim();p.mode=document.getElementById('pd_mode').value;p.unit=document.getElementById('pd_unit').value.trim()||'㎡';p.note=document.getElementById('pd_note').value.trim();}
+    toast('已保存修改');
+  }else{
+    DB.products.push({id:uid('pd'),name:name,unitPrice:price,board:document.getElementById('pd_board').value.trim(),door:document.getElementById('pd_door').value.trim(),hw:document.getElementById('pd_hw').value.trim(),mode:document.getElementById('pd_mode').value,unit:document.getElementById('pd_unit').value.trim()||'㎡',note:document.getElementById('pd_note').value.trim()});
+    toast('已添加产品');
+  }
+  saveDB();cancelEditProduct();renderSet();
+}
+function addProduct(){saveProduct();}
+function delProduct(id){if(!confirm('删除该产品吗？'))return;DB.products=DB.products.filter(p=>p.id!==id);saveDB();renderSet();}
+function wipeAll(){if(!confirm('确定清空本机全部数据吗？此操作不可恢复！'))return;if(!confirm('再次确认：清空后只能靠备份文件恢复，继续吗？'))return;localStorage.removeItem(DBKEY);location.reload()}
+
+/* ============ 初始化 ============ */
+loadDB();renderBackupBar();renderTabs();go('dash');
+initFolderMode();
+fbAutoInit();
+</script>
+<div id="modal" class="modal" style="display:none" onclick="if(event.target===this)closeModal()"><div class="mbox"><h3 id="modalTitle"></h3><div id="modalBody"></div><div class="row" style="margin-top:14px;justify-content:flex-end"><button class="btn" onclick="closeModal()">关闭</button></div></div></div>
+</body>
+</html>
