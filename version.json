@@ -1,5 +1,5 @@
 {
-  "version": "2026.10.13.1",
+  "version": "2026.10.13.2",
   "url": "https://lisyu-d.github.io/chenli-erp-updates/index.html",
-  "note": "GitHub Pages 的 index.html 尚未同步到 2026.10.13.2，请用电脑版压缩包直接更新"
+  "notes": "配置说明库、收款比例设置、Firebase同步竞态修复、APK版本对比"
 }
